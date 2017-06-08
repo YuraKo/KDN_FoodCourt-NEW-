@@ -53,8 +53,9 @@ public class MemberController {
 		System.out.println("log : 로그인 시도 - " + mno);
 		memberService.login(mno, pw);
 		session.setAttribute("mno", mno);
+		session.setAttribute("grade", memberService.search(mno).getGrade());
 		System.out.println("log : 로그인 완료");
-		return "index";
+		return "redirect:/";
 	}
 
 	//로그아웃
