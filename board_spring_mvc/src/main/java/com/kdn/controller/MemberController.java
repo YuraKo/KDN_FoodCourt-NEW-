@@ -62,7 +62,8 @@ public class MemberController {
 	@RequestMapping(value="logout.do", method=RequestMethod.GET)
 	public String loginOut(HttpSession session) {
 		session.removeAttribute("mno");
-		return "index";
+		session.removeAttribute("grade");
+		return "redirect:/";
 	}
 	
 	//myPage
