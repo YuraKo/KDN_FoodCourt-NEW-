@@ -4,51 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
 <mapper namespace="food">
-	<select id="search" parameterType="int" resultType="food">
-		select *
-		from food
-		where fno=#{fno}
-	</select>
 	
-	<select id="searchAll" parameterType="pagebean" resultType="food"> <!-- 프로그램에서 리스트로 담아서 리턴 -->
-		select * from food
-		<where>
-			<if test="word != null">
-						fname like '%'||#{word}||'%'
-			</if>
-		</where>
-		order by fno
-	</select>
 	
-	<select id="getCount" parameterType="pagebean" resultType="int"> 
-		select count(*) from food
-		<where>
-			<if test="word != null">
-						fname like '%'||#{word}||'%'
-			</if>
-		</where>
-	</select>
-	
-	<insert id="insert" parameterType="food">
-		insert into food(fno, fname, image)
-		values(
-			#{fno:INTEGER},#{fname:STRING},#{image:STRING}
-		)
-	</insert>
-
-	<update id="update" parameterType="food">
-		update food set fname = #{fname:STRING},
-						image = #{image:STRING}
-		where fno=#{fno:INTEGER}
-	</update>
-	
-	<delete id="delete" parameterType="int">
-		delete from food
-		where fno=#{fno}
-	</delete>
-	
-	<select id="getFoodNo" resultType="int">
-		select food_no.nextVal from dual;	
-	</select>
 </mapper>
 

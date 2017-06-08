@@ -17,6 +17,7 @@
 		<typeAlias type="com.kdn.model.domain.PageBean" alias="pagebean"/>
 		<typeAlias type="com.kdn.model.domain.Member" alias="member"/>
 		<typeAlias type="com.kdn.model.domain.Food" alias="food"/>
+		<typeAlias type="com.kdn.model.domain.FoodMenu" alias="foodMenu"/>
 		 <typeAlias alias="review" type="com.kdn.model.domain.Review"/>
 			 
 	</typeAliases>

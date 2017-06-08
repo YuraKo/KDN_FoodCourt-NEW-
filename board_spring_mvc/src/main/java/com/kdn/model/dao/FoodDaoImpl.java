@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kdn.model.biz.FoodDao;
@@ -13,6 +14,8 @@ import com.kdn.model.domain.PageBean;
 
 @Repository("foodDao")
 public class FoodDaoImpl implements FoodDao {
+	
+	@Autowired
 	private SqlSessionTemplate session;
 
 	@Override
