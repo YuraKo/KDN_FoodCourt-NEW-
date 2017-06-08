@@ -47,8 +47,7 @@
 				</div>
 				<div class="col-md-10 text-justify">
 					<h3>${noticeBoard.title }</h3>
-					<p>${noticeBoard.
- }</p>
+					<p>${noticeBoard. }</p>
 					<br />
 					<p>${noticeBoard.contents }</p>
 				</div>
