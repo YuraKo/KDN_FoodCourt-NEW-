@@ -59,7 +59,7 @@ function removeForm(count){
                             <div class="form-group">
                                 <textarea class="form-control" name="contents" id="contents" placeholder="Enter anonouncement to be notified" rows="6"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-default">Cancel</button>
+                            <a href="listNoticeBoard.do" class="btn btn-default">Cancel</a>
                             <button type="submit" class="btn btn-danger">Submit</button><br/><br/>
                         </div>
                     </div>

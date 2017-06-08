@@ -42,7 +42,7 @@ public class NoticeBoardController {
 		System.out.println("upload directory : " + dir);
 		noticeBoardService.add(noticeBoard, dir);
 		
-		return "index";
+		return "redirect:listNoticeBoard.do";
 	}
 	
 	@RequestMapping(value="listNoticeBoard.do", method=RequestMethod.GET)
