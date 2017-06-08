@@ -13,13 +13,11 @@
    <!-- CSS includes -->
    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://www.shieldui.com/shared/components/latest/css/light/all.min.css" rel="stylesheet" />
-    <link href="bootstrap/css/theme.css" rel="stylesheet">
-    <link href="bootstrap/css/bootswatch.scss" rel="stylesheet">
-    <link href="bootstrap/css/variables.scss" rel="stylesheet">
-    
- 
+   <link href="https://www.shieldui.com/shared/components/latest/css/light/all.min.css" rel="stylesheet" />
+   <link href="css/theme.css" rel="stylesheet">
+
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
    <!--[if lt IE 9]>
@@ -28,6 +26,7 @@
    <![endif]-->
 </head>
 <style type="text/css">
+
 #login {
     padding-top: 50px
 }
@@ -306,7 +305,7 @@
    <div class="clearfix hidden-xs" style="width:100%; height:10px;"></div>
    <div class="container">
       <div class="page-header" id="dishes">
-         <h1 class="text-center text-danger">Chef's Recommended</h1>
+         <h1 class="text-center text-default">TOP4</h1>
       </div>
       <div class="row">
          <div class="col-md-6">
@@ -350,71 +349,38 @@
    <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
 </div>
  
-<div class="container-imagess">
+<div class="container-ourteam">
     <div class="container">
         <div class="page-header" id="about">
-            <h1 class="text-center text-danger">The Chefs' Opinion</h1>
+            <h1 class="text-center text-danger">Meet Our Team</h1>
         </div>
-        <div class="row">
             <div class="col-md-3 text-center">
-                <p>"Great service and food"</p>
+                <p>Ko Yu Ra</p>
                 <br />
-            <p><img src="images/image3.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
+            <p><img src="images/koyura.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
                 <br />
-            <p class="text-warning">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </p>
-            </div>
-            <div class="row">
-            <div class="col-md-3 text-center">
-                <p>"Great service and food"</p>
-                <br />
-            <p><img src="images/image3.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
-                <br />
-            <p class="text-warning">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </p>
             </div>
             <div class="col-md-3 text-center">
-                <p>"Exceeds expectations"</p>
+                <p>Shin Yeon Seok</p>
                 <br />
-            <p><img src="images/image1.jpg" style="border-radius:50%; width:180px; height:180px;" /></p>
+            <p><img src="images/shinyeonseok.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
                 <br />
-            <p class="text-warning">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </p>
             </div>
             <div class="col-md-3 text-center">
-                <p>"This is the best restaurant"</p>
+                <p>Yu Jeong Jae</p>
                 <br />
-            <p><img src="images/image2.jpg" style="border-radius:50%; width:180px; height:180px;" /></p>
+            <p><img src="images/yujeongjae.jpg" style="border-radius:50%; width:180px; height:180px;" /></p>
                 <br />
-            <p class="text-warning">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </p>
+            </div>
+            <div class="col-md-3 text-center">
+                <p>Lee Soo Chang</p>
+                <br />
+            <p><img src="images/leesoochang.jpg" style="border-radius:50%; width:180px; height:180px;" /></p>
+                <br />
             </div>
         </div>
     </div>
-</div>
- 
- 
- 
+
 <!--<div class="container-gallery">
     <div class="container">
         <div class="page-header" id="gallery">

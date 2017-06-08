@@ -37,24 +37,23 @@
 			</c:if>
 		</div>
 		<form id="nfrm">
-			<input type="hidden" id="pageNo" name="pageNo" value="1" /> 
+			<input type="hidden" id="noticePageNo" name="noticePageNo" value="1" /> 
 			<input type="hidden" id="nno" name="nno" />
-			<c:forEach var="noticeBoard" items="${list }">
+			<c:forEach var="noticeBoard" items="${noticeList}">
 				<div class="col-md-2 text-center">
 					<p class="">
 						<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 					</p>
 				</div>
 				<div class="col-md-10 text-justify">
-					<h3>${noticeBoard.title }</h3>
-					<p>${noticeBoard.
- }</p>
+					<h3>${noticeBoard.title}</h3>
+					<p>${noticeBoard.ndate}</p>
 					<br />
 					<p>${noticeBoard.contents }</p>
 				</div>
 			</c:forEach>
 			<div class="bottom">
-				<center>${pageBean.pagelink }</center>
+				<center>${noticePageBean.pagelink }</center>
 			</div>
 		</form>
 	</div>

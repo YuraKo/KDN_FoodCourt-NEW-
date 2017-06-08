@@ -45,7 +45,6 @@ public class BoardController {
 		boardService.add(board, dir);
 		
 		return "redirect:listBoard.do";
-		//�룷�썙�뱶�씪�븣�뒗 寃쎈줈媛� �궡�븘�엳湲� �뻹臾몄뿉 �슂泥��젙蹂닿� �궡�븘�엳�쓬. �씠�윺�븣 redirect濡� 媛��빞
 	}
 	
 	@RequestMapping(value="listBoard.do", method=RequestMethod.GET)

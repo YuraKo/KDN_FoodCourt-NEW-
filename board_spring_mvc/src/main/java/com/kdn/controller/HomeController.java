@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.domain.NoticeBoard;
+import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
 
 /**
@@ -30,12 +31,22 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, PageBean bean) {
-		List<NoticeBoard> list = noticeBoardService.searchAll(bean);
-		model.addAttribute("list", list);
+	public String home(Locale locale, Model model, NoticePageBean noticebean, PageBean bean) {
+		
+		
+		/**
+		 * notice board 내용 입력 해주기~
+		 */
+		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
+		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		
+		
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		
 		return "index";
+		
+		
 	}
 	
 }
