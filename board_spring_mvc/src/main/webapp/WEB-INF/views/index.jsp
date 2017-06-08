@@ -272,71 +272,37 @@
 	</div>
 
 	<div class="container-services">
-    <div class="container">
-        <div class="page-header" id="services">
-            <h1 class="text-center text-default">Review</h1>
-        </div>
-      <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
-        <div class="row">
-            <div class="col-md-3 text-center">
-            <article id="reviewBoardContent">
+		<div class="container">
+			<div class="page-header" id="services">
+				<h1 class="text-center text-default">Weekly Menu</h1>
+			</div>
+			<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
+			<div class="row">
+				<div class="col-md-3 text-center">
+					<!--  <article id="reviewBoardContent">
 						<jsp:include page="${reviewBoardContent}"/>
-			</article>
-            </div>
-        </div>
-    </div>
-</div>
- 
-<div class="container-about">
-    <div class="container">
-        <div class="page-header" id="about">
-            <h1 class="text-center text-danger">The Chefs' Opinion</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <p>"Great service and food"</p>
-                <br />
-            <p><img src="images/image3.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
-                <br />
-            <p class="text-warning">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p>"Exceeds expectations"</p>
-                <br />
-            <p><img src="images/image1.jpg" style="border-radius:50%; width:180px; height:180px;" /></p>
-                <br />
-            <p class="text-warning">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p>"This is the best restaurant"</p>
-                <br />
-            <p><img src="images/image2.jpg" class="img-responsive" style="border-radius:50%; width:180px; height:180px;" /></p>
-                <br />
-            <p class="text-warning">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
- 
-<div class="container-dishes">
+			</article>-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-about">
+		<div class="container">
+			<div class="page-header" id="about">
+				<h1 class="text-center text-danger">Review</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-4 text-center">
+					<article id="reviewBoardContent">
+						<jsp:include page="${reviewBoardContent}" />
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-dishes">
    <div class="clearfix hidden-xs" style="width:100%; height:10px;"></div>
    <div class="container">
       <div class="page-header" id="dishes">
