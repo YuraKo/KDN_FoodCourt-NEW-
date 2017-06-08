@@ -56,7 +56,8 @@
 			<list>
 				<value>/WEB-INF/spring/Board_query.xml</value> <!-- 쿼리 추가하는 곳. 여러사람이 만들고 합칠떄 -->
 				<value>/WEB-INF/spring/Member_query.xml</value> 
-				<value>/WEB-INF/spring/notice_board_query.xml</value> 
+				<value>/WEB-INF/spring/notice_board_query.xml</value>
+				<value>/WEB-INF/spring/Food_Query.xml</value>  
 			</list>
 		</property>
 	</bean>
