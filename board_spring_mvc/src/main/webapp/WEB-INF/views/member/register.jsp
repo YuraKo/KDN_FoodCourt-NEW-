@@ -34,31 +34,31 @@
     <div class="form-group">
       <label class="col-lg-2 control-label" for="id">ID</label>
       <div class="col-lg-10">
-        <input class="form-control" id="mno" type="text" placeholder="ID">
+        <input class="form-control" id="mno" name="mno" type="text" placeholder="ID">
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="password">Password</label>
       <div class="col-lg-10">
-        <input class="form-control" id="pw" type="pw" placeholder="Password">
+        <input class="form-control" id="password" name="password" type="password" placeholder="Password">
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="name">Name</label>
       <div class="col-lg-10">
-        <input class="form-control" id="mname" type="text" placeholder="Name">
+        <input class="form-control" id="mname" name = "mname" type="text" placeholder="Name">
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="phone">Phone</label>
       <div class="col-lg-10">
-        <input class="form-control" id="phone" type="text" placeholder="Phone">
+        <input class="form-control" id="phone" name = "phone" type="text" placeholder="Phone">
       </div>
     </div>
     <div class="form-group">
       <label class="col-lg-2 control-label" for="email">Email</label>
       <div class="col-lg-10">
-        <input class="form-control" id="email" type="text" placeholder="Email">
+        <input class="form-control" id="email" name = "email" type="email" placeholder="Email">
       </div>
     </div>
     <div class="form-group">

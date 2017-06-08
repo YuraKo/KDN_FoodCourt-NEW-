@@ -31,14 +31,21 @@
 	}
 	
 	function check(){
-		var pw = document.getElementById("password").value;
+		var pw = document.getElementById("password_new").value;
 		var pc = document.getElementById("password_confirm").value;
-		if(pw == pc){
-			document.getElementById("frm").submit();
+		
+		if(pw != null && pc != null){
+			if(pw == pc){
+				documenr.getElementById("password").value = pw;
+				document.getElementById("frm").submit();
+			}
+			else{
+				alert("비밀번호가 일치하지 않습니다.");
+				document.getElementById("password_confirm").value = "";
+			}s
 		}
 		else{
-			alert("비밀번호가 일치하지 않습니다.");
-			document.getElementById("password_confirm").value = "";
+			document.getElementById("frm").submit();
 		}
 	}
 </script>
@@ -56,10 +63,11 @@
         <div class="form-control" id="mno" name = "mno" value = "${member.mno}" align = "left">${member.mno}</div>
       </div>
     </div>
+    <input class="form-control" type = "hidden" name = "password" id="password" value = "${member.password}">
     <div class="form-group">
-      <label class="col-lg-2 control-label" for="password">Password</label>
+      <label class="col-lg-2 control-label" for="password">New Password</label>
       <div class="col-lg-10">
-        <input class="form-control" type = "password" name = "password" id="password" value = "${member.password}" >
+        <input class="form-control" type = "password" name = "password_new" id="password_new" >
       </div>
     </div>
     <div class="form-group">
