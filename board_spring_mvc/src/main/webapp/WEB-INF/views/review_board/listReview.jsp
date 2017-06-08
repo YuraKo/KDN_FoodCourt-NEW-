@@ -60,7 +60,7 @@
 						<table id = "r-table" class="table table-filter">
 							<tbody>
 								<tr data-status="pagado">
-										<c:forEach var="review" items="${list}">
+										<c:forEach var="review" items="${reviewList}">
 										<td>
 											<a href="javascript:;" class="star">
 												<i class="glyphicon glyphicon-star"></i>

@@ -43,7 +43,7 @@ public class ReviewController {
 	@RequestMapping(value="listReview.do", method=RequestMethod.GET)
 	public String listReview(PageBean bean, Model model) {
 		List<Review> list = reviewService.searchAll(bean);
-		model.addAttribute("list", list);
+		model.addAttribute("reviewList", list);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		return "index";
 
