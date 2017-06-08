@@ -34,6 +34,7 @@ public class HomeController {
 		List<NoticeBoard> list = noticeBoardService.searchAll(bean);
 		model.addAttribute("list", list);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		return "index";
 	}
 	

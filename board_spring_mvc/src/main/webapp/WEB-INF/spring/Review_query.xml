@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+
+<mapper namespace="review">
+	<insert id="insert" parameterType="review">
+		insert into review(rno, mno, regdate, spoint, comments, fmno)
+		values(
+				 review_no.nextval
+				,#{mno:INTEGER}
+				,sysdate
+				,#{spoint:INTEGER}
+				,#{comments:VARCHAR}
+				,#{fmno:INTEGER}
+		)
+		
+	</insert>
+	
+	<update id="update" parameterType="review">
+		update review set mno=#{mno:INTEGER}, regdate=sysdate
+						, spoint=#{spoint:INTEGER}, comments=#{comments:VARCHAR}
+						, fmno=#{fmno:INTEGER}
+		where rno=#{rno:INTEGER}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from review
+		where rno=#{rno:INTEGER}
+	</delete>
+	
+	<select id="search" parameterType="int" resultType="review">
+		SELECT *
+		FROM (SELECT rno rno, spoint, COMMENTs, a.fno fno, a.fname fname, a.fmno fmno, TO_CHAR(a.fmdate, 'yyyy-mm-dd') regdate 
+      		  FROM REVIEW r,
+	      		  (select f.FNO, f.FNAME, fm.FMNO, fm.FMDATE
+	       		   FROM FOOD f, FOODMENU fm
+	       		   WHERE f.FNO = fm.FNO) a
+      		  WHERE a.fmno = r.FMNO)
+      	where rno = #{rno}
+	</select>
+	
+	<select id="searchAll" parameterType="pagebean" resultType="review" >
+		SELECT *
+		FROM (SELECT rno rno, spoint, COMMENTs, a.fno fno, a.fname fname, a.fmno fmno, TO_CHAR(a.fmdate, 'yyyy-mm-dd') regdate 
+      		  FROM REVIEW r,
+	      		  (select f.FNO, f.FNAME, fm.FMNO, fm.FMDATE
+	       		   FROM FOOD f, FOODMENU fm
+	       		   WHERE f.FNO = fm.FNO) a
+      		  WHERE a.fmno = r.FMNO)
+		<where>
+		<if test = "word != null">
+			<choose>
+				<when test="key== 'rno'">
+					rno=#{word}
+				</when>
+				<when test="key== 'spoint'">
+					spoint=#{word}
+				</when>
+				<when test="key== 'fname'">
+					fname like '%'||#{word}||'%'
+				</when>
+				<when test="key== 'comments'">
+					comments like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</if>
+		</where>
+		order by rno desc
+		
+	</select>	
+	<select id="getCount" parameterType="pagebean" resultType="int" >
+		SELECT count(*)
+		FROM (SELECT rno rno, spoint, COMMENTs, a.fno fno, a.fname fname, a.fmno fmno, TO_CHAR(a.fmdate, 'yyyy-mm-dd') regdate 
+      		  FROM REVIEW r,
+	      		  (select f.FNO, f.FNAME, fm.FMNO, fm.FMDATE
+	       		   FROM FOOD f, FOODMENU fm
+	       		   WHERE f.FNO = fm.FNO) a
+      		  WHERE a.fmno = r.FMNO)
+		<where>
+		<if test = "word != null">
+			<choose>
+				<when test="key== 'rno'">
+					rno=#{word}
+				</when>
+				<when test="key== 'spoint'">
+					spoint=#{word}
+				</when>
+				<when test="key== 'fname'">
+					fname like '%'||#{word}||'%'
+				</when>
+				<when test="key== 'comments'">
+					comments like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</if>
+		</where>
+	</select>
+	
+	<select id="getReviewNo" resultType="int">
+		select review_no.nextval from dual
+	</select>
+	
+</mapper>

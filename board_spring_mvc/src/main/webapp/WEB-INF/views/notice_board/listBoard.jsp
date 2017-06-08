@@ -26,7 +26,16 @@
 </head>
 <body>
 	<div class="main">
-		<a href="insertNoticeBoardForm.do">NEW</a>
+		<div class="check_member_grade">
+			<%-- <c:choose>
+				<c:when test='${grade == "Y"}'>
+					<a href="insertNoticeBoardForm.do">NEW</a>
+				</c:when>
+			</c:choose> --%>
+			<c:if test="${!empty grade and grade=='Y' }">
+				<a href="insertNoticeBoardForm.do">NEW</a>
+			</c:if>
+		</div>
 		<form id="nfrm">
 			<input type="hidden" id="pageNo" name="pageNo" value="1" /> 
 			<input type="hidden" id="nno" name="nno" />
