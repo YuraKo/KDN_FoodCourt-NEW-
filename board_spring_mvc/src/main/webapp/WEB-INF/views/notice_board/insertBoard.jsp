@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.row{
+		background-color: #e5e5e5;
+	}
+</style>
 <script type="text/javascript" src="js/jquery-1.10.1.js"></script>
 <script type="text/javascript">
 $(function(){
