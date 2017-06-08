@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kdn.model.domain.FileBean;
 import com.kdn.model.domain.NoticeBoard;
-import com.kdn.model.domain.PageBean;
+import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.UpdateException;
 import com.kdn.util.PageUtility;
 
@@ -47,28 +47,22 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	@Override
 	public NoticeBoard search(int nno) {
 		try {
-			System.out.println("search>>>>>>>>>>>>>>>>>>>@service");
-			System.out.println(nno);
 			return dao.search(nno);
 		} catch (Exception e) {
 			e.printStackTrace();		
 			throw new UpdateException("검색 중 오류 발생");
 		}
-
 	}
 
 	@Override
 	public void add(NoticeBoard noticeBoard, String dir) {
-		System.out.println("insert notice board >>>>>>>>>>>>>>>>>>>>>>>>> @Service1");
 		File[] files = null;
 		int size = 0;
 		
 		try {			
 			int nno = dao.getNoticeBoardNo();	
 			noticeBoard.setNno(nno);
-			System.out.println("insert notice board >>>>>>>>>>>>>>>>>>>>>>>>> @Service2");
 			dao.add(noticeBoard);			
-			System.out.println("insert notice board >>>>>>>>>>>>>>>>>>>>>>>>> @Service3");
 			MultipartFile[] fileup = noticeBoard.getFileup();			
 			int index = 0;					
 			if(fileup != null){
@@ -103,20 +97,20 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	}
 
 	@Override
-	public List<NoticeBoard> searchAll(PageBean bean) {
+	public List<NoticeBoard> searchAll(NoticePageBean noticebean) {
 		try {
-			System.out.println("searchAll============@serviceimpl");
-			int total = dao.getCount(bean);
-			System.out.println("afer dao.getCount");
+			int noticetotal = dao.getCount(noticebean);
 			
-			PageUtility bar = 
-			  new PageUtility(bean.getInterval()
-					  		, total
-					  		, bean.getPageNo()
+			System.out.println("notice pagebean : " +noticetotal);
+			
+			PageUtility noticebar = 
+			  new PageUtility(noticebean.getInterval()
+					  		, noticetotal
+					  		, noticebean.getPageNo()
 					  		, "images/");
-			bean.setPagelink(bar.getPageBar());
+			noticebean.setPagelink(noticebar.getPageBar());
 			
-			return dao.searchAll(bean);
+			return dao.searchAll(noticebean);
 		} catch (Exception e) {
 			e.printStackTrace();
 			

@@ -2,8 +2,10 @@ package com.kdn.controller;
  
 import java.util.List;
  
+
 import javax.servlet.http.HttpServletRequest;
  
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
  
+
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.domain.NoticeBoard;
+import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
  
 @Controller
@@ -46,9 +50,10 @@ public class NoticeBoardController {
 	}
 	
 	@RequestMapping(value="listNoticeBoard.do", method=RequestMethod.GET)
-	public String listBoard(PageBean bean, Model model) {
-		List<NoticeBoard> list = noticeBoardService.searchAll(bean);
-		model.addAttribute("list", list);
+	public String listBoard(NoticePageBean noticebean, Model model) {
+		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("noticePageBean", noticebean);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
 		return "index";
 	}
