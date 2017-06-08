@@ -109,6 +109,3 @@ CREATE SEQUENCE psurvey_no;
 CREATE SEQUENCE review_no;
 CREATE SEQUENCE schedule_no;
 CREATE SEQUENCE upload_no;
-
-
-

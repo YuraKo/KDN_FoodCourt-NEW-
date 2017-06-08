@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.row{
+	#insertNoticeBoardRow {
+	
 		background-color: #e5e5e5;
 	}
 </style>
@@ -35,7 +36,7 @@ function removeForm(count){
 <form method="post" action="insertNoticeBoard.do" enctype="multipart/form-data" >
 <div class="container-noticeboardinsert">
     <div class="container">
-        <div class="row">
+        <div class="row" id="insertNoticeBoardRow">
 			<div class="col-md-8">
                 <form>
                     <div class="row">
@@ -59,7 +60,7 @@ function removeForm(count){
                                 <textarea class="form-control" name="contents" id="contents" placeholder="Enter anonouncement to be notified" rows="6"></textarea>
                             </div>
                             <button type="submit" class="btn btn-default">Cancel</button>
-                            <button type="submit" class="btn btn-danger">Submit</button>
+                            <button type="submit" class="btn btn-danger">Submit</button><br/><br/>
                         </div>
                     </div>
                 </form>

@@ -91,8 +91,8 @@
     color: #212121;
 }
 .btn-custom {
-    color: #fff;
-   background-color: #red;
+   color: #fff;
+   background-color: red;
 }
 .btn-custom:hover,
 .btn-custom:focus {
@@ -263,8 +263,6 @@
 				</div>
 				<div class="col-md-4 text-center">
 					<h3>Calendar</h3>
-					<a href="listNoticeBoard.do">LOAD</a>
-					<a href="insertBoardForm.do">NEW</a>
 					<div id="calendar" class="calendar"></div>
 					<br />
 					<br />
@@ -415,7 +413,7 @@
             <h1 class="text-center text-danger">The Chefs' Opinion</h1>
         </div>
         <div class="row">
-            <div class="col-md-4 text-center">
+            <div class="col-md-3 text-center">
                 <p>"Great service and food"</p>
                 <br />
             <p><img src="images/image3.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
@@ -428,7 +426,7 @@
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 </p>
             </div>
-            <div class="col-md-4 text-center">
+            <div class="col-md-3 text-center">
                 <p>"Exceeds expectations"</p>
                 <br />
             <p><img src="images/image1.jpg" style="border-radius:50%; width:180px; height:180px;" /></p>
@@ -441,7 +439,7 @@
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 </p>
             </div>
-            <div class="col-md-4 text-center">
+            <div class="col-md-3 text-center">
                 <p>"This is the best restaurant"</p>
                 <br />
             <p><img src="images/image2.jpg" class="img-responsive" style="border-radius:50%; width:180px; height:180px;" /></p>
@@ -557,19 +555,18 @@
         <div class="row">
             <div class="col-md-3">
                 <p style="font-size:18px;"><span class="fa fa-thumbs-o-up text-danger"></span> VISIT US</p>
-                <p>We are driven by uncompromising freshness and quality, gracious hospitality and a growing list of dishes</p>
+                <p>한전KDN 본관 2층 구내식당</p>
             </div>
             <div class="col-md-3">
                 <p style="font-size:18px;"><span class="fa fa-clock-o text-danger"></span> OPEN HOURS</p>
-                <p>Mondays : Closed</p>
-            <p>Tue-Fri : 0am - 12am</p>
-                <p>Sat-Sun : 7am - 1am</p>
+                <p>Mon-Fri : 8am-7pm </p>
+                <p>Sat-Sun : Closed</p>
             </div>
          <div class="col-md-3">
                 <p style="font-size:18px;"><span class="fa fa-map-marker text-danger"></span> CONTACTS</p>
-                <p>54, North Road, PA 45086, USA</p>
-                <p>+1 888 455 6677</p>
-                <p><a href="mailto:mail@example.com">mail@example.com</a></p>
+                <p>전라남도 나주시 빛가람로 661</p>
+                <p>+82 061 931 7114</p>
+                <p><a href="mailto:admin@kdn.com">admin@kdn.com</a></p>
             </div>
             <div class="col-md-3">
                 <p style="font-size:18px;"><span class="fa fa-envelope-o text-danger"></span> NEWSLETTER</p>
@@ -582,12 +579,6 @@
                     </div>
                 </p>
                 <p><br /></p>
-                <p>
-                    <a class="fa fa-twitter footer-socialicon" target="_blank" href="https://twitter.com/"></a>
-                    <a class="fa fa-facebook footer-socialicon" target="_blank" href="https://www.facebook.com/"></a>
-                    <a class="fa fa-google-plus footer-socialicon" target="_blank" href="https://plus.google.com/"></a>
-                    <a class="fa fa-linkedin footer-socialicon" target="_blank" href="https://plus.google.com/"></a>
-                </p>
             </div>
         </div>
     </div>
@@ -600,7 +591,7 @@
                 
             </div>
             <div class="col-md-4">
-                <p>Created by <a href="https://www.shieldui.com" title="Shield UI">Shield UI</a> and hosted by <a href="https://www.prepbootstrap.com" title="PrepBootstrap">PrepBootstrap</a></p>
+                <p>Created by <a href="https://www.kdn.com" title="KDN">KDN 2017 </a></p>
             </div>
         </div>
     </div>

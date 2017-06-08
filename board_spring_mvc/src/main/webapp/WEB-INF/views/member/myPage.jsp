@@ -44,6 +44,8 @@
 </script>
 </head>
 <body>
+<div id="container-register">
+<div class="container">
 <center>
 <form class="form-horizontal" action = "updateMember.do?mno=${member.mno}" id = "frm" method = "POST">
 <fieldset>
@@ -103,6 +105,8 @@
     </div>
 </fieldset>
 </form>
+</div>
+</div>
 </center>
 </body>
 </html>

@@ -27,7 +27,6 @@
 <body>
 	<div class="main">
 		<a href="insertNoticeBoardForm.do">NEW</a>
-		</td>
 		<form id="nfrm">
 			<input type="hidden" id="pageNo" name="pageNo" value="1" /> 
 			<input type="hidden" id="nno" name="nno" />
