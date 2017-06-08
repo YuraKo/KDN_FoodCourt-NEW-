@@ -13,7 +13,7 @@
 		from noticeboard
 		where nno=#{nno}
 	</select>
-	<select id="searchAll" parameterType="pagebean" resultType="noticeBoard">
+	<select id="searchAll" parameterType="noticepagebean" resultType="noticeBoard">
 		select nno, mno, title, contents, to_char(ndate,'yyyy-mm-dd') ndate
 		from noticeboard
 		<where>
@@ -33,7 +33,7 @@
 		</where>
 		order by nno desc
 	</select>
-	<select id="getCount" parameterType="pagebean" resultType="int">
+	<select id="getCount" parameterType="noticepagebean" resultType="int">
 		select count(*)
 		from noticeboard
 		<where>

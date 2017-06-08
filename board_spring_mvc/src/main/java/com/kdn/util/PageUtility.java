@@ -107,6 +107,7 @@ public class PageUtility {
             sb.append("&nbsp;&nbsp;<img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle>");
         return sb.toString();
     }
-    public String getTotalPageCount() {       return String.valueOf(totalpagecount);
+    public String getTotalPageCount() {       
+    	return String.valueOf(totalpagecount);
     }
 }
