@@ -48,7 +48,7 @@ public class NoticeBoardController {
 	@RequestMapping(value="listNoticeBoard.do", method=RequestMethod.GET)
 	public String listBoard(PageBean bean, Model model) {
 		List<NoticeBoard> list = noticeBoardService.searchAll(bean);
-		model.addAttribute("list", list);
+		model.addAttribute("noticeList", list);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
 		return "index";
 	}

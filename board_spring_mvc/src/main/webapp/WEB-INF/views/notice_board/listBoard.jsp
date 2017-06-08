@@ -39,7 +39,7 @@
 		<form id="nfrm">
 			<input type="hidden" id="pageNo" name="pageNo" value="1" /> 
 			<input type="hidden" id="nno" name="nno" />
-			<c:forEach var="noticeBoard" items="${list }">
+			<c:forEach var="noticeBoard" items="${noticeList}">
 				<div class="col-md-2 text-center">
 					<p class="">
 						<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
