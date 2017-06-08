@@ -6,10 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	#insertNoticeBoardRow {
-	
-		background-color: #e5e5e5;
-	}
+
+
+
 </style>
 <script type="text/javascript" src="js/jquery-1.10.1.js"></script>
 <script type="text/javascript">
@@ -41,7 +40,7 @@ function removeForm(count){
                 <form>
                     <div class="row">
                         <div class="page-header" id="insertBoard">
-                            <h1 class="text-center text-default">Edit Notice Board</h1>
+                            <h3 class="text-center">New Announcement</h3>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -57,9 +56,9 @@ function removeForm(count){
                         </div>
                         <div class="col-md-12 text-center">
                             <div class="form-group">
-                                <textarea class="form-control" name="contents" id="contents" placeholder="Enter anonouncement to be notified" rows="6"></textarea>
+                                <textarea class="form-control" name="contents" id="contents" placeholder="Enter announcement to be notified" rows="6"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-default">Cancel</button>
+                            <a href="listNoticeBoard.do" class="btn btn-default">Cancel</a>
                             <button type="submit" class="btn btn-danger">Submit</button><br/><br/>
                         </div>
                     </div>

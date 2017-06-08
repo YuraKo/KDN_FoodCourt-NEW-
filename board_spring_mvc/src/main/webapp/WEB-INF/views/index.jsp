@@ -155,7 +155,7 @@
    <div class="modal-dialog modal-sm">
       <div class="modal-content">
          <div class="modal-header">
-                <h4>Login with Employee Number</h4>
+                <h4>LOGIN</h4><br/>
                     <form role="form" action="login.do" method="post" id="login-form" autocomplete="off" >
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
@@ -262,7 +262,7 @@
 					</article>
 				</div>
 				<div class="col-md-4 text-center">
-					<h3>Calendar</h3>
+					<br/><h3>Calendar</h3><br/>
 					<div id="calendar" class="calendar"></div>
 					<br />
 					<br />
@@ -274,37 +274,14 @@
 	<div class="container-services">
     <div class="container">
         <div class="page-header" id="services">
-            <h1 class="text-center text-default">We Provide the Following</h1>
+            <h1 class="text-center text-default">Review</h1>
         </div>
       <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
         <div class="row">
             <div class="col-md-3 text-center">
-            <span class="fa fa-calendar svcicon"></span>
-                <br /><br />
-                <h3 class="text-warning">Open 24/7</h3><br />
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            </div>
-            <div class="col-md-3 text-center">
-                <span class="fa fa-map-signs svcicon"></span>
-                <br /><br />
-            <h3 class="text-warning">Free parking</h3><br />
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            </div>
-         <div class="col-md-3 text-center">
-                <span class="fa fa-map-o svcicon"></span>
-                <br /><br />
-            <h3 class="text-warning">Central location</h3><br />
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            </div>
-            <div class="col-md-3 text-center">
-                <span class="fa fa-thumbs-o-up svcicon"></span>
-                <br /><br />
-            <h3 class="text-warning">High quality</h3><br />
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
+            <article id="reviewBoardContent">
+						<jsp:include page="${reviewBoardContent}"/>
+			</article>
             </div>
         </div>
     </div>
@@ -426,6 +403,20 @@
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 </p>
             </div>
+            <div class="row">
+            <div class="col-md-3 text-center">
+                <p>"Great service and food"</p>
+                <br />
+            <p><img src="images/image3.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
+                <br />
+            <p class="text-warning">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </p>
+            </div>
             <div class="col-md-3 text-center">
                 <p>"Exceeds expectations"</p>
                 <br />
@@ -442,7 +433,7 @@
             <div class="col-md-3 text-center">
                 <p>"This is the best restaurant"</p>
                 <br />
-            <p><img src="images/image2.jpg" class="img-responsive" style="border-radius:50%; width:180px; height:180px;" /></p>
+            <p><img src="images/image2.jpg" style="border-radius:50%; width:180px; height:180px;" /></p>
                 <br />
             <p class="text-warning">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
