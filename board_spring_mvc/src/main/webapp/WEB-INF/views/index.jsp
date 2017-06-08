@@ -357,13 +357,13 @@
             <div class="col-md-3 text-center">
                 <p>Ko Yu Ra</p>
                 <br />
-            <p><img src="images/image1.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
+            <p><img src="images/koyura.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
                 <br />
             </div>
             <div class="col-md-3 text-center">
                 <p>Shin Yeon Seok</p>
                 <br />
-            <p><img src="images/image3.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
+            <p><img src="images/shinyeonseok.jpg" style="border-radius:50%; width:180px; height:180px;;" /></p>
                 <br />
             </div>
             <div class="col-md-3 text-center">
