@@ -16,6 +16,7 @@
 		 <typeAlias type="com.kdn.model.domain.NoticeBoardFile" alias="noticeBoardFile"/>
 		 <typeAlias type="com.kdn.model.domain.PageBean" alias="pagebean"/>
 		 <typeAlias type="com.kdn.model.domain.Member" alias="member"/>
+		 <typeAlias alias="review" type="com.kdn.model.domain.Review"/>
 			 
 	</typeAliases>
 	<mappers>
