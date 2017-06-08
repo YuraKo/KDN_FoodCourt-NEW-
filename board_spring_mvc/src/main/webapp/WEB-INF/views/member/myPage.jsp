@@ -36,8 +36,8 @@
 		var cur_pw = document.getElementById("password");
 		
 		if(pw.value != "" && pc.value != ""){
-			if(pw == pc){
-				document.getElementById("password").value = pw;
+			if(pw.value == pc.value ){
+				document.getElementById("password").value = pw.value;
 				document.getElementById("frm").submit();
 			}
 			else{

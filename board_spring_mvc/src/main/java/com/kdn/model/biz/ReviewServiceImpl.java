@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.kdn.model.domain.PageBean;
 import com.kdn.model.domain.Review;
+import com.kdn.model.domain.ReviewPageBean;
 import com.kdn.model.domain.UpdateException;
 import com.kdn.util.PageUtility;
+import com.kdn.util.ReviewPageUtility;
 
 @Service("reviewService")
 public class ReviewServiceImpl implements ReviewService {
@@ -61,7 +63,7 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		try {
 			int rno = dao.getBoardNo();
-			review.setNo(rno);
+			review.setRno(rno);
 			dao.add(review);
 			
 		} catch (Exception e) {
@@ -73,15 +75,15 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review> searchAll(PageBean bean) {
+	public List<Review> searchAll(ReviewPageBean bean) {
 		// TODO Auto-generated method stub
 		try {
 			int total = dao.getCount(bean);
-			System.out.println(total);
-			PageUtility bar = new PageUtility(bean.getInterval(), total, bean.getPageNo(), "/images");
-			System.out.println(bar);
+			System.out.println("total"+total);
+			ReviewPageUtility bar = new ReviewPageUtility(bean.getInterval(), total, bean.getPageNo(), "/images");
+			System.out.println("bar"+bar);
 			bean.setPagelink(bar.getPageBar());
-			System.out.println(bean);
+			System.out.println("bean"+bean);
 
 			return dao.searchAll(bean);
 

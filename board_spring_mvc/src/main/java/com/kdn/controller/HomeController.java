@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kdn.model.biz.NoticeBoardService;
+import com.kdn.model.biz.ReviewService;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
+import com.kdn.model.domain.Review;
+import com.kdn.model.domain.ReviewPageBean;
 
 /**
  * Handles requests for the application home page.
@@ -29,9 +32,12 @@ public class HomeController {
 	@Autowired
 	NoticeBoardService	noticeBoardService;
 	
+	@Autowired
+	ReviewService reviewService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, NoticePageBean noticebean, PageBean bean) {
+	public String home(Locale locale, Model model, NoticePageBean noticebean, ReviewPageBean bean) {
 		
 		
 		/**
@@ -41,7 +47,8 @@ public class HomeController {
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
 		
-		
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		
 		return "index";

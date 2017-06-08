@@ -77,6 +77,7 @@ public class MemberServiceImpl implements MemberService {
 	public void add(Member member) {
 		try {
 			Member find= dao.search(member.getMno());
+			System.out.println(member);
 			if(find != null){
 				throw new UpdateException("add.");
 			}else{

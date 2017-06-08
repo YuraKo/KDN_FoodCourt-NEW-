@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kdn.model.biz.ReviewDao;
 import com.kdn.model.domain.PageBean;
 import com.kdn.model.domain.Review;
+import com.kdn.model.domain.ReviewPageBean;
 
 @Repository("reviewDao")
 public class ReviewDaoImpl implements ReviewDao {
@@ -46,13 +47,13 @@ public class ReviewDaoImpl implements ReviewDao {
 	}
 
 	@Override
-	public List<Review> searchAll(PageBean bean) {
+	public List<Review> searchAll(ReviewPageBean bean) {
 		RowBounds rows = new  RowBounds(bean.getStart()-1, bean.getInterval());
-		return session.selectList("reivew.searchAll", bean, rows);
+		return session.selectList("review.searchAll", bean, rows);
 	}
 
 	@Override
-	public int getCount(PageBean bean) {
+	public int getCount(ReviewPageBean bean) {
 		// TODO Auto-generated method stub
 		return session.selectOne("review.getCount", bean);
 	}
