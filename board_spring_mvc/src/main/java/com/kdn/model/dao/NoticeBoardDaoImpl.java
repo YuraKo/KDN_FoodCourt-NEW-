@@ -42,7 +42,7 @@ public class NoticeBoardDaoImpl implements NoticeBoardDao {
 
 	@Override
 	public List<NoticeBoard> searchAll(PageBean bean) {
-		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getEnd());
+		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
 		return sql.selectList("noticeBoard.searchAll", bean, rows);
 	}
 

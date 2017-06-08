@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*,com.kdn.model.domain.*"  %>
-<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core"%> 
-<jsp:useBean 	id="pageBean"         class="com.kdn.model.domain.PageBean" 
-				scope="request"/>
+	pageEncoding="UTF-8" import="java.util.*,com.kdn.model.domain.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="pageBean" class="com.kdn.model.domain.PageBean"
+	scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function pagelist(cpage){
-		document.getElementById("pageNo").value=cpage;
+	function pagelist(cpage) {
+		document.getElementById("pageNo").value = cpage;
 		var nfrm = document.getElementById("nfrm");
-		nfrm.action="listNoticeBoard.do";
+		nfrm.action = "listNoticeBoard.do";
 		nfrm.submit();
 	}
-	function getNoticeBoard(nno){
+	function getNoticeBoard(nno) {
 		document.getElementById("nno").value = nno;
 		var nfrm = document.getElementById("nfrm");
-		nfrm.action="searchNoticeBoard.do";
+		nfrm.action = "searchNoticeBoard.do";
 		nfrm.submit();
 	}
 </script>
@@ -26,7 +26,8 @@
 </head>
 <body>
 	<div class="main">
-	<a href="insertBoardForm.do">NEW</a></td>
+		<a href="insertNoticeBoardForm.do">NEW</a>
+		</td>
 		<form id="nfrm">
 			<input type="hidden" id="pageNo" name="pageNo" value="1" /> 
 			<input type="hidden" id="nno" name="nno" />
@@ -37,7 +38,7 @@
 					</p>
 				</div>
 				<div class="col-md-10 text-justify">
-					<h3>${noticeBoard.nno }</h3>
+					<h3>${noticeBoard.title }</h3>
 					<p>${noticeBoard.ndate }</p>
 					<br />
 					<p>${noticeBoard.contents }</p>

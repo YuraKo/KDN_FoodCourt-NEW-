@@ -28,7 +28,7 @@ function removeForm(count){
 </head>
 <body>
 <form method="post" action="insertNoticeBoard.do" enctype="multipart/form-data" >
-<div class="container-reservations">
+<div class="container-noticeboardinsert">
     <div class="container">
         <div class="row">
 			<div class="col-md-8">
@@ -39,23 +39,19 @@ function removeForm(count){
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="mno" id="mno" placeholder="ID" />
+                                <input type="text" class="form-control" name="mno" id="mno" placeholder="Register Number" />
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                           <!-- 원래 여기 작성자 이름이랑 날짜 입력 부분 있었음 -->
+                           <!-- 위에 있던 제목 입력 부분 여기로 내림 -->
                             <div class="form-group">
                                 <input type="text" class="form-control" name="title" id="title"placeholder="Title" />
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="mname" id="mname"placeholder="Name" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="ndate" id="ndate" placeholder="Date" />
-                            </div>
-                        </div>
                         <div class="col-md-12 text-center">
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="Enter anonouncement to be notified" rows="6"></textarea>
+                                <textarea class="form-control" name="contents" id="contents" placeholder="Enter anonouncement to be notified" rows="6"></textarea>
                             </div>
                             <button type="submit" class="btn btn-default">Cancel</button>
                             <button type="submit" class="btn btn-danger">Submit</button>
