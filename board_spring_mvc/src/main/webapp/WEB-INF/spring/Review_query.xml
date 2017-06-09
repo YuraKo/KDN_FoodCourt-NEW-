@@ -6,10 +6,19 @@
 
 <mapper namespace="review">
 	<insert id="insert" parameterType="review">
-		
+		insert into reviewboard(RNO,MNO,SPOINT,COMMENTS,FNO,FNAME,REGDATE)
+		values(reviewboard_no.nextval
+			   , #{mno:INTEGER}
+			   , #{spoint:INTEGER}
+			   , #{comments:VARCHAR}
+			   , #{fno:INTEGER}
+			   , #{fname:VARCHAR}
+			   , sysdate)
 	</insert>
 	
 	<update id="update" parameterType="review">
+	update reviewboard set SPOINT=#{spoint:INTEGER}, COMMENTS=#{comments:VARCHAR}
+	where mno= 0
 	</update>
 	
 	<delete id="delete" parameterType="int">
@@ -34,10 +43,10 @@
 					mno=#{word}
 				</when>
 				<when test="key== 'spoint'">
-					spoint=#{word}
+					spoint like '%'||#{word}||'%'
 				</when>
 				<when test="key== 'fno'">
-					fno=#{word}
+					fno like '%'||#{word}||'%'
 				</when>
 				<when test="key== 'fname'">
 					fname like '%'||#{word}||'%'
