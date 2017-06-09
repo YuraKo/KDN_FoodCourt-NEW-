@@ -13,7 +13,7 @@ import com.kdn.model.domain.FileBean;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.UpdateException;
-import com.kdn.util.PageUtility;
+import com.kdn.util.NoticePageUtility;
 
 @Service("noticeBaordService")
 public class NoticeBoardServiceImpl implements NoticeBoardService {
@@ -103,8 +103,8 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 			
 			System.out.println("notice pagebean : " +noticetotal);
 			
-			PageUtility noticebar = 
-			  new PageUtility(noticebean.getInterval()
+			NoticePageUtility noticebar = 
+			  new NoticePageUtility(noticebean.getInterval()
 					  		, noticetotal
 					  		, noticebean.getPageNo()
 					  		, "images/");

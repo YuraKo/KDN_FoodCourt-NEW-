@@ -29,8 +29,10 @@
 	}
 </script>
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+	rel='stylesheet' type='text/css'>
 <style type="text/css">
-
 </style>
 </head>
 <body>
@@ -38,15 +40,102 @@
 		<form id="frm">
 			<input type="hidden" id="pageNo" name="pageNo" value="1" /> <input
 				type="hidden" id="no" name="no" />
-			<table align="center">
+
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-10 col-md-offset-1">
+
+						<div class="panel panel-default panel-table">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col col-xs-6">
+										<select name="key" id="key" class="btn btn-success btn-filter">
+											<option value="all">-----all-----</option>
+											<option value="rno" <%=pageBean.getKey("rno")%>>리뷰번호</option>
+											<option value="mno" <%=pageBean.getKey("mno")%>>사원번호</option>
+											<option value="fname" <%=pageBean.getKey("fname")%>>음식이름</option>
+											<option value="spoint" <%=pageBean.getKey("spoint")%>>별점</option>
+											<option value="comments" <%=pageBean.getKey("comments")%>>코멘트</option>
+										</select> <input type="text" id="word" name="word"
+											value="${reviewPageBean.word}"
+											class="btn btn-default btn-filter"> <a href="#"
+											onclick="pagelist(1)" class="btn btn-danger btn-filter">검색</a>
+
+									</div>
+									<div class="col col-xs-6 text-right">
+										<c:if test="${ !empty mno }">
+											<a href="#"
+												class="btn btn-sm btn-primary btn-create"
+												data-toggle="modal" data-target="#reviewModal">글쓰기</a>
+										</c:if>
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<table class="table table-striped table-bordered table-list">
+									<thead>
+										<tr>
+											<th><em class="fa fa-cog"></em></th>
+											<th class="hidden-xs">리뷰번호</th>
+											<th>사원번호</th>
+											<th>음식이름</th>
+											<th>별점</th>
+											<th>코멘트</th>
+											<th>등록일</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="reviewBoard" items="${list}">
+											<tr>
+
+												<td align="center"> <c:if
+														test="${ mno == reviewBoard.mno }">  
+														<a href="#" class="btn btn-default" data-toggle="modal" data-target="#updateReviewModal" > 
+														<em class="fa fa-pencil"></em></a>
+														<a href="#" class="btn btn-danger"><em
+															class="fa fa-trash"
+															data-toggle="modal" data-target="#deleteReviewModal"></em></a>
+													 </c:if>  </td>
+
+												<td class="hidden-xs">${reviewBoard.rno}</td>
+												<td>${reviewBoard.mno }</td>
+												<td>${reviewBoard.fname }</td>
+												<td>${reviewBoard.spoint }</td>
+												<td>${reviewBoard.comments}</td>
+												<td>${reviewBoard.regdate }</td>
+
+												<td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+
+							</div>
+							<div class="panel-footer">
+								<div class="row">
+									<center>${reviewPageBean.pagelink }</center>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<%-- <table align="center">
 				<tr align="center">
-					<td colspan="3" height="100" align="center"><select
+					<td colspan="3" height="100" align="center">
+					<select
 						name="key" id="key" class="btn btn-success btn-filter">
 							<option value="all">-----all-----</option>
-							<option value="id" <%=pageBean.getKey("rno")%>>아이디</option>
-							<option value="title" <%=pageBean.getKey("spoint")%>>별점</option>
-							<option value="contents" <%=pageBean.getKey("fname")%>>음식</option>
-							<option value="contents" <%=pageBean.getKey("comments")%>>내용</option>
+							<option value="rno" <%=pageBean.getKey("rno")%>>아이디</option>
+							<option value="spoint" <%=pageBean.getKey("spoint")%>>별점</option>
+							<option value="fname" <%=pageBean.getKey("fname")%>>음식</option>
+							<option value="comments" <%=pageBean.getKey("comments")%>>내용</option>
 					</select> <input type="text" id="word" name="word" value="${reviewPageBean.word}"
 						class="btn btn-default btn-filter"> <a href="#"
 						onclick="pagelist(1)" class="btn btn-danger btn-filter">검색</a> 
@@ -68,9 +157,12 @@
 											</p>
 										</div>
 										<div class="col-md-10 text-justify">
-											<h3>${reviewBoard.rno}</h3>
+											<p>${reviewBoard.rno}</p>
+											<p>${reviewBoard.mno }</p>
+											<p>${reviewBoard.spoint }</p>
+											<p>${reviewBoard.fno }</p>
+											<p>${reviewBoard.fname }</p>
 											<p>${reviewBoard.comments}</p>
-											<br />
 											<p>${reviewBoard.regdate }</p>
 										</div>
 									</c:forEach>
@@ -82,9 +174,11 @@
 			</table>
 			<div class="bottom">
 				<center>${reviewPageBean.pagelink }</center>
-			</div>
+			</div> --%>
 		</form>
 	</div>
+
+
 
 	<script type="text/javascript">
 		$(document).ready(

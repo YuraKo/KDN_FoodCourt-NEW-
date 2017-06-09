@@ -44,7 +44,7 @@
     <c:if test="${msg != null }"> 
     	<script type="text/javascript">  alert('${msg}');</script>
     </c:if>
-	<div class="main" id="viewBoard" style="display:none">
+	<div class="main" id="reviewBoard" style="display:none">
 	 	<form id="frm"  >
 	 	    <input type ="hidden" name="no"  id="no" />
 	 	    <input type ="hidden" name="query"  id="query" />
@@ -53,8 +53,8 @@
 					<tr><td><label for="title">제목</label></td>
 					    <td>${board.title}</td>
 					</tr>
-					<tr><td colspan="2">내용 &nbsp;&nbsp;글쓴이:${board.id}
-										&nbsp;&nbsp; 게시일:${board.regdate}</td></tr>
+					<tr><td colspan="2">내용 &nbsp;&nbsp;글쓴이:${reviewBoard.mno}
+										&nbsp;&nbsp; 게시일:${reviewBoard.regdate}</td></tr>
 					<tr><td colspan="2"  valign="top" height="200">
 						<pre>${board.contents }</pre>							
 						</td></tr>
@@ -62,7 +62,7 @@
 				<tfoot>
 					<tr><td colspan="2" align="center">
 						<a href="#" onclick="listBoard('frm')">목록</a>
-						<c:if test="${board.id == id }">
+						<c:if test="${reviewBoard.mno == mno }">
 							<a href="#" onclick="updateForm()">수정</a>
 							<a href="#" onclick="deleteBoard()">삭제</a>
 						</c:if>
@@ -74,18 +74,18 @@
 	</div>
 	<div class="main" id="writeBoard" style="display:none">
 	 	<form  id="updatefrm">
-	 	    <input type ="hidden" name="no"  id="no"  value="${board.no}"/>
-	 	    <input type ="hidden" name="id"  id="id"  value="${board.id}"/>
+	 	    <input type ="hidden" name="no"  id="no"  value="${reviewBoard.rno}"/>
+	 	    <input type ="hidden" name="id"  id="id"  value="${reviewBoard.mno}"/>
 			<table border="1" align="center">
 				<caption>게시글 작성</caption>
 				<tbody>
 					<tr><td><label for="title">제목</label></td>
-					    <td><input type="text" name="title" id="title" value="${board.title}"/></td>
+					    <td><input type="text" name="title" id="title" value="${reviewBoard.fname}"/></td>
 					</tr>
 					<tr><td colspan="2">내용</td></tr>
 					<tr><td colspan="2">
-						<textarea name="content" id="content" cols="30" rows="10">
-							${board.contents}
+						<textarea name="comments" id="comments" cols="30" rows="10">
+							${reviewBoard.comments}
 						</textarea>
 						</td></tr>
 				</tbody>

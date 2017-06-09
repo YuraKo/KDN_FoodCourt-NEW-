@@ -31,14 +31,19 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@RequestMapping(value="insertReviewBoardForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="insertReviewForm.do", method=RequestMethod.GET)
 	public String insertBoardForm(Model model) {
-		model.addAttribute("reviewBoardContent", "review_board/insertReview.jsp");
 		return "index";
 	}
-	@RequestMapping(value="insertReviewBaord.do", method=RequestMethod.POST)
+	@RequestMapping(value="insertReview.do", method=RequestMethod.POST)
 	public String insertBoard(Review review) {
 		reviewService.add(review);
+		return "redirect:listReview.do";
+	}
+	@RequestMapping(value="updateReview.do", method=RequestMethod.POST)
+	public String updateBoard(Review review) {
+		reviewService.update(review);
+		System.out.println(review);
 		return "redirect:listReview.do";
 	}
 	
@@ -59,6 +64,14 @@ public class ReviewController {
 		
 	}
 
-	
+
+	@RequestMapping(value="test2.do", method=RequestMethod.GET)
+	public String test(int rno, Model model) {
+		model.addAttribute("reviewBoard", reviewService.search(rno));
+		model.addAttribute("reviewBoardContent", "review_board/searchBoard.jsp");
+		return "index";
+		
+	}
+
 
 }

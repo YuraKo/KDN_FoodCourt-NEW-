@@ -10,6 +10,15 @@
  
    <title>KDN Restaurant</title>
  
+ <script type="text/javascript">
+ function getBoard(rno){
+		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
+		document.getElementById("rno").value = rno;
+		var frm = document.getElementById("frm");
+		frm.action="test2.do";
+		frm.submit();
+	}
+ </script>
    <!-- CSS includes -->
    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -149,7 +158,7 @@
    </div><!-- /.container-fluid -->
 </nav>
  
-<!-- 모달 팝업 --> 
+<!-- login 모달 팝업 --> 
 <div class="modal fade forget-modal" id = "myModal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -173,6 +182,70 @@
                     <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>
                     <hr>
          </div>
+      </div> <!-- /.modal-content -->
+   </div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- insert review 모달 팝업 --> 
+<div class="modal fade forget-modal" id = "reviewModal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+         <div class="modal-header">
+                <h4>Insert Review</h4><br/>
+                    <form method="post" action="insertReview.do" enctype="multipart/form-data" >
+						<table align="center" width="300">
+						<tr><th colspan="2"> 게시글 작성 </th></tr>
+						<tr height="50"><td><label for="title" value="${mno }">아이디</label></td>
+			    		<td><input type="text" name="mno" id="mno"/></td>
+						</tr>
+						<tr height="50"><td><label for="title" value="${spoint}">별점</label></td>
+			    		<td><input type="text" name="spoint" id="spoint"/></td>
+						</tr>
+						<tr height="50"><td><label for="title" value="${fmno}">음식이름</label></td>
+			    		<td><input type="text" name="fname" id="fname"/></td>
+						</tr>
+						<tr><td colspan="2"><label for="contents" >코멘트</label></td></tr>
+						<tr><td colspan="2" align="center">
+			    		<textarea name="comments" id="comments" cols="30" rows="5"></textarea>
+						</td></tr>
+						<tr><td colspan="2" align="center">
+						<input type="submit" value="작성"/>
+						<input type="reset" value="취소"/>
+						</td></tr>
+	</table>
+</form>
+                    <hr>
+         </div>
+      </div> <!-- /.modal-content -->
+   </div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+
+<!-- update review 모달 팝업 --> 
+<div class="modal fade forget-modal" id = "updateReviewModal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+         <div class="modal-header">
+                <h4>Update Review</h4><br/>
+         </div>
+	 	<form method="post" action="updateReview.do" enctype="multipart/form-data" >
+						<table align="center" width="300">
+						<tr><th colspan="2"> 게시글 수정 </th></tr>
+						<tr height="50"><td><label for="title" value="${spoint}">별점</label></td>
+			    		<td><input type="text" name="spoint" id="spoint"/></td>
+						</tr>
+						<tr><td colspan="2"><label for="contents" >코멘트</label></td></tr>
+						<tr><td colspan="2" align="center">
+			    		<textarea name="comments" id="comments" cols="30" rows="5"></textarea>
+						</td></tr>
+						<tr><td colspan="2" align="center">
+						<input type="submit" value="작성"/>
+						<input type="reset" value="취소"/>
+						</td></tr>
+	</table>
+</form>
+	
+                
+         
       </div> <!-- /.modal-content -->
    </div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
