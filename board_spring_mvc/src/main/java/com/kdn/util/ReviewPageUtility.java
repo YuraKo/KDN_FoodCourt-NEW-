@@ -74,12 +74,12 @@ public class ReviewPageUtility {
             lastpagecount = totalpagecount+1;
 		
         if(firstpagecount>pagePercount)
-            sb.append(" <a href='javascript:pagelist("+beforetenpage+")'><img src=\""+imagepath+"btn_first.gif\" border='0'  hspace='3' align='absmiddle'></a>&nbsp;&nbsp;");
+            sb.append(" <a href='javascript:reviewPagelist("+beforetenpage+")'><img src=\""+imagepath+"btn_first.gif\" border='0'  hspace='3' align='absmiddle'></a>&nbsp;&nbsp;");
         else
             sb.append("<img src=\""+imagepath+"btn_first.gif\" border='0'  align=absmiddle>&nbsp;&nbsp;");
 
         if(((currentpagecount-1)/pagePercount*pagePercount)+1>beforetenpage)
-            sb.append("<a href='javascript:pagelist("+ beforetenpage+")'><img src=\""+imagepath+"btn_prev.gif\" border='0' hspace='3' align=absmiddle></a>&nbsp;&nbsp;");
+            sb.append("<a href='javascript:reviewPagelist("+ beforetenpage+")'><img src=\""+imagepath+"btn_prev.gif\" border='0' hspace='3' align=absmiddle></a>&nbsp;&nbsp;");
         else
             sb.append("<img src=\""+imagepath+"btn_prev.gif\" border='0'   align=absmiddle>&nbsp;&nbsp;");
 
@@ -90,19 +90,19 @@ public class ReviewPageUtility {
                 if (i == currentpagecount)
                     sb.append("<b>" + i + "</b>");
                 else
-                    sb.append("<a href='javascript:pagelist("+i+")'>" + i + "</a>");
+                    sb.append("<a href='javascript:reviewPagelist("+i+")'>" + i + "</a>");
                 if( i !=lastpagecount-1)
                     sb.append(" . ");
             }
         }
 
         if(nexttenpage<((totalpagecount-1)/pagePercount+1)*pagePercount)
-            sb.append("&nbsp;&nbsp;<a href='javascript:pagelist("+ (nexttenpage)+ ")'><img src=\""+imagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle></a>");
+            sb.append("&nbsp;&nbsp;<a href='javascript:ReviewreviewPagelist("+ (nexttenpage)+ ")'><img src=\""+imagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle></a>");
         else
             sb.append("&nbsp;&nbsp;<img src=\""+imagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle>");
 
         if((((currentpagecount-1)/pagePercount)+1)*pagePercount < nexttenpage)
-            sb.append("&nbsp;&nbsp;<a href='javascript:pagelist("+ (nexttenpage)+")'><img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle></a>");
+            sb.append("&nbsp;&nbsp;<a href='javascript:reviewPagelist("+ (nexttenpage)+")'><img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle></a>");
         else
             sb.append("&nbsp;&nbsp;<img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle>");
         return sb.toString();

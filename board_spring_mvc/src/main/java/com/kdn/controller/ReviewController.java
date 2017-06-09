@@ -4,6 +4,9 @@ import java.util.List;
 
 
 
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.domain.NoticeBoard;
+import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
 import com.kdn.model.domain.Review;
 import com.kdn.model.domain.ReviewPageBean;
@@ -31,6 +37,9 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@Autowired
+	private NoticeBoardService noticeBoardService;
+	
 	@RequestMapping(value="insertReviewForm.do", method=RequestMethod.GET)
 	public String insertBoardForm(Model model) {
 		return "index";
@@ -48,10 +57,17 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="listReview.do", method=RequestMethod.GET)
-	public String listReview(ReviewPageBean bean, Model model) {
+	public String listReview(ReviewPageBean bean, Model model, NoticePageBean noticebean) {
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		
+		System.out.println("NoticeBoardController.listBoard>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		System.out.println("NoticePageBean>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noticebean);
+		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("noticePageBean", noticebean);
+		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
 		return "index";
 
 	}
