@@ -18,14 +18,24 @@
 </style>
 </head>
 <body>
-	<c:forEach var = "diets" items = "${dietList}">
-		<span>식단 번호 : </span> ${diets.dietNo}<br/>
-		<span>아 점 저 : </span>  ${diets.scode}<br/>
-		<span>식단 날짜 : </span> ${diets.dietDate}<br/>
-		<span>메인 음식 :</span>  ${diets.mainDish}<br/>
-		<span> 반찬 : </span>   ${diets.sideDish}<br/>
-		<hr/>
-	</c:forEach>
+		<table border = 1>
+			<tr>
+				<th></th><th colspan = 2>월</th><th colspan = 2>화</th><th colspan = 2>수</th><th colspan = 2>목</th><th colspan = 2>금</th>
+			</tr>
+			<tr>
+				<td>아침</td><td colspan = 2></td><td colspan = 2></td><td colspan = 2></td><td colspan = 2></td><td colspan = 2></td>
+			</tr>
+			<tr>
+				<td rowspan = 2>점심</td><td>일식</td><td>한식</td><td>일식</td><td>한식</td><td>일식</td><td>한식</td><td>일식</td><td>한식</td><td>일식</td><td>한식</td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td>저녁</td><td colspan = 2></td><td colspan = 2></td><td colspan = 2></td><td colspan = 2></td><td colspan = 2></td>
+			</tr>
+		</table>
+
 </body>
 </html>
 
