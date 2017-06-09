@@ -34,8 +34,10 @@ public class NoticePageBean implements Serializable {
 		return noticePageNo;
 	}
 	public void setPageNo(int noticePageNo) {
-		if(noticePageNo>0)this.noticePageNo = noticePageNo;
-		else this.noticePageNo=1;
+		if(noticePageNo>0)
+			this.noticePageNo = noticePageNo;
+		else 
+			this.noticePageNo=1;
 	}
 	public void setPageNo(String noticePageNo) {
 		try {
@@ -87,6 +89,49 @@ public class NoticePageBean implements Serializable {
 	}
 	public void setEnd(int noticeEnd) {
 		this.noticeEnd =noticeEnd;
+	}
+	
+	public String getNoticeKey() {
+		return noticeKey;
+	}
+	public void setNoticeKey(String noticeKey) {
+		this.noticeKey = noticeKey;
+	}
+	public String getNoticeWord() {
+		return noticeWord;
+	}
+	public void setNoticeWord(String noticeWord) {
+		this.noticeWord = noticeWord;
+	}
+	public String getNoticePagelink() {
+		return noticePagelink;
+	}
+	public void setNoticePagelink(String noticePagelink) {
+		this.noticePagelink = noticePagelink;
+	}
+	public int getNoticePageNo() {
+		return noticePageNo;
+	}
+	public void setNoticePageNo(int noticePageNo) {
+		this.noticePageNo = noticePageNo;
+	}
+	public int getNoticeInterval() {
+		return noticeInterval;
+	}
+	public void setNoticeInterval(int noticeInterval) {
+		this.noticeInterval = noticeInterval;
+	}
+	public int getNoticeStart() {
+		return noticeStart;
+	}
+	public void setNoticeStart(int noticeStart) {
+		this.noticeStart = noticeStart;
+	}
+	public int getNoticeEnd() {
+		return noticeEnd;
+	}
+	public void setNoticeEnd(int noticeEnd) {
+		this.noticeEnd = noticeEnd;
 	}
 	@Override
 	public String toString() {

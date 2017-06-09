@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*,com.kdn.model.domain.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="pageBean" class="com.kdn.model.domain.PageBean"
-	scope="request" />
+<jsp:useBean id="noticePageBean" class="com.kdn.model.domain.NoticePageBean" scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function pagelist(cpage) {
-		document.getElementById("pageNo").value = cpage;
+	function noticePagelist(cpage) {
+		document.getElementById("noticePageNo").value = cpage;
 		var nfrm = document.getElementById("nfrm");
 		nfrm.action = "listNoticeBoard.do";
 		nfrm.submit();

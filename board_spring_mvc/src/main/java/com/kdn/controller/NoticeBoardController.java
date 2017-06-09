@@ -3,8 +3,14 @@ package com.kdn.controller;
 import java.util.List;
  
 
+
+
+
 import javax.servlet.http.HttpServletRequest;
  
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +21,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
  
 
+
+
+
 import com.kdn.model.biz.NoticeBoardService;
+import com.kdn.model.biz.ReviewService;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
+import com.kdn.model.domain.Review;
+import com.kdn.model.domain.ReviewPageBean;
  
 @Controller
 public class NoticeBoardController {
@@ -35,6 +47,9 @@ public class NoticeBoardController {
 	@Autowired
 	private NoticeBoardService noticeBoardService;
 	
+	@Autowired
+	private ReviewService reviewService;
+	
 	@RequestMapping(value="insertNoticeBoardForm.do", method=RequestMethod.GET)
 	public String insertBoardForm(Model model) {
 		model.addAttribute("noticeBoardContent", "notice_board/insertBoard.jsp");
@@ -50,11 +65,16 @@ public class NoticeBoardController {
 	}
 	
 	@RequestMapping(value="listNoticeBoard.do", method=RequestMethod.GET)
-	public String listBoard(NoticePageBean noticebean, Model model) {
+	public String listBoard(NoticePageBean noticebean, Model model, ReviewPageBean bean) {
+		System.out.println("NoticeBoardController.listBoard>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		System.out.println("NoticePageBean>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noticebean);
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticePageBean", noticebean);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
+		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		return "index";
 	}
  
