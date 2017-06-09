@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="diet">
+	<insert id = "add" parameterType="diet">
+		insert into diet(DIETNO,scode,DIETDATE,MAINDISH,SIDEDISH)
+		values(
+			#{diet:INTEGER},
+			#{scode:VARCHAR},
+			#{dietDate:VARCHAR},
+			#{mainDish:VARCHAR},
+			#{sideDish:VARCHAR}
+		)
+	</insert>
+	
+	<update id = "update" parameterType="diet">
+		update diet set
+			scode = #{scode:INTEGER},
+			DIETDATE = #{dietDate:VARCHAR},
+			MAINDISH = #{mainDish:VARCHAR},
+			SIDEDISH = #{sideDish:VARCHAR}
+		where
+		DIETNO= #{dietNo:INTEGER}		
+	</update>
+	
+	<select id = "getDietNo" resultType="int">
+		select diet_no.nextVal
+		from dual;
+	</select>
+	
+	<select id = "search5Diet" resultType="diet">
+	    SELECT DIETNO,scode,to_char(DIETDATE, 'yyyy-mm-dd'),MAINDISH,SIDEDISH
+	    FROM diet
+	    where (dietdate BETWEEN to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) and to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) + 4.99999)
+		ORDER BY DIETDATE, SCODE
+	</select>
+	
+	<select id = "search" parameterType="int" resultType="diet">
+		select *
+		from diet where dietNo = #{dietNo}
+	</select>
+	
+	<delete id = "delete" parameterType="int">
+		delete from diet
+		where DIETNO= #{dietNo:INTEGER}
+	</delete>
+	
+	
+</mapper>	
