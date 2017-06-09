@@ -1,6 +1,7 @@
 package com.kdn.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,10 +15,5 @@ public class DietController {
 		model.addObject("msg", e.getMessage());
 		model.addObject("content", "ErrorHandler.jsp"); 
 		return model;
-	}
-	
-	@RequestMapping(value = "showDiet.do", method = RequestMethod.GET)
-	public String showDiet(){
-		
 	}
 }

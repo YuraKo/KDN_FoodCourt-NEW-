@@ -9,12 +9,11 @@ public class Diet {
 	
 	public Diet(){}
 	
-	public Diet(int dietNo, int scode, String date, String mainDish,
-			String sideDish) {
+	public Diet(int dietNo, int scode, String dietDate, String mainDish, String sideDish) {
 		super();
 		this.dietNo = dietNo;
 		this.scode = scode;
-		this.dietDate = date;
+		this.dietDate = dietDate;
 		this.mainDish = mainDish;
 		this.sideDish = sideDish;
 	}
@@ -35,11 +34,11 @@ public class Diet {
 		this.scode = scode;
 	}
 
-	public String getDate() {
+	public String getDietDate() {
 		return dietDate;
 	}
 
-	public void setDate(String date) {
+	public void setDietDate(String date) {
 		this.dietDate = date;
 	}
 
