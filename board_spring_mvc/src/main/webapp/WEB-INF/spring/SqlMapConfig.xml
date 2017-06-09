@@ -20,7 +20,8 @@
 		<typeAlias type="com.kdn.model.domain.Member" alias="member"/>
 		<typeAlias type="com.kdn.model.domain.Food" alias="food"/>
 		<typeAlias type="com.kdn.model.domain.FoodMenu" alias="foodMenu"/>
-		 <typeAlias alias="review" type="com.kdn.model.domain.Review"/>
+		<typeAlias type="com.kdn.model.domain.Diet" alias="diet"/>
+		<typeAlias alias="review" type="com.kdn.model.domain.Review"/>
 			 
 	</typeAliases>
 	<mappers>

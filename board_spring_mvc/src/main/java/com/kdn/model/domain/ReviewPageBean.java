@@ -97,7 +97,6 @@ public class ReviewPageBean implements Serializable {
 				.append(", end=").append(end).append("]");
 		return builder.toString();
 	}
-	
 }
 
 
