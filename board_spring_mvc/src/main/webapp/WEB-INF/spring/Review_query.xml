@@ -24,6 +24,30 @@
 	<select id="searchAll" parameterType="reviewpagebean" resultType="review" >
 		SELECT *
 		from reviewBoard
+		<where>
+		<if test = "word != null">
+			<choose>
+				<when test="key== 'rno'">
+					rno=#{word}
+				</when>
+				<when test="key== 'mno'">
+					mno=#{word}
+				</when>
+				<when test="key== 'spoint'">
+					spoint=#{word}
+				</when>
+				<when test="key== 'fno'">
+					fno=#{word}
+				</when>
+				<when test="key== 'fname'">
+					fname like '%'||#{word}||'%'
+				</when>
+				<when test="key== 'comments'">
+					comments like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</if>
+		</where>
 		
 		
 	</select>	
