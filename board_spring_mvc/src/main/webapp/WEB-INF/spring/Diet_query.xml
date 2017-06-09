@@ -31,7 +31,7 @@
 	</select>
 	
 	<select id = "search5Diet" resultType="diet">
-	    SELECT DIETNO,scode,to_char(DIETDATE, 'yyyy-mm-dd'),MAINDISH,SIDEDISH
+	    SELECT dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
 	    FROM diet
 	    where (dietdate BETWEEN to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) and to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) + 4.99999)
 		ORDER BY DIETDATE, SCODE

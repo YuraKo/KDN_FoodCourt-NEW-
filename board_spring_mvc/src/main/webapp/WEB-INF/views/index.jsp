@@ -363,9 +363,9 @@
 			<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
 			<div class="row">
 				<div class="col-md-3 text-center">
-					<!--  <article id="reviewBoardContent">
-						<jsp:include page="${reviewBoardContent}"/>
-			</article>-->
+					<article id="weeklyMenuContent">
+						<jsp:include page="${weeklyMenuContent}"/>
+					</article>
 				</div>
 			</div>
 		</div>

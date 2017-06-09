@@ -42,18 +42,18 @@ function removeForm(count){
                         <div class="page-header" id="insertBoard">
                             <h3 class="text-center">New Announcement</h3>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="mno" id="mno" placeholder="Register Number" />
+                                <input type="hidden" class="form-control" name="mno" id="mno" value="${mno}" placeholder="Register Number" />
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                           <!-- 원래 여기 작성자 이름이랑 날짜 입력 부분 있었음 -->
-                           <!-- 위에 있던 제목 입력 부분 여기로 내림 -->
                             <div class="form-group">
                                 <input type="text" class="form-control" name="title" id="title"placeholder="Title" />
                             </div>
                         </div>
+                        <!-- <div class="col-md-6">
+                           원래 여기 작성자 이름이랑 날짜 입력 부분 있었음
+                           위에 있던 제목 입력 부분 여기로 내림
+                        </div> -->
                         <div class="col-md-12 text-center">
                             <div class="form-group">
                                 <textarea class="form-control" name="contents" id="contents" placeholder="Enter announcement to be notified" rows="6"></textarea>
