@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kdn.model.biz.ReviewDao;
-import com.kdn.model.domain.PageBean;
 import com.kdn.model.domain.Review;
 import com.kdn.model.domain.ReviewPageBean;
 

@@ -6,46 +6,46 @@ import javax.print.attribute.standard.PageRanges;
  * JSP에서 데이터를 page navigation 형식으로 구성하기 위해 사용되는 클래스이다.
  */
 public class ReviewPageUtility {
-    int firstpagecount=0;
-    int lastpagecount=0;
+    int reviewfirstpagecount=0;
+    int reviewlastpagecount=0;
 
-    int nextpagecount=0;				//다음 페이지
-    int beforepagecount=0;			    //이전 페이지
-    int currentpagecount=0;			    //현재 페이지
+    int reviewnextpagecount=0;				//다음 페이지
+    int reviewbeforepagecount=0;			    //이전 페이지
+    int reviewcurrentpagecount=0;			    //현재 페이지
 	
-    int beforetenpage=0;				//이전 페이지
-    int nexttenpage=0;					//다음 페이지
+    int reviewbeforetenpage=0;				//이전 페이지
+    int reivewnexttenpage=0;					//다음 페이지
 
-    int totalrowcount=0;				//총 row 개수
-    int totalpagecount=0;				//총 페이지 수
-    int displayrowcount=0;				//한 페이지당 보여줄 개수
-    int pagePercount = 5;
-    String imagepath;
-    String search;
+    int reivewtotalrowcount=0;				//총 row 개수
+    int reviewtotalpagecount=0;				//총 페이지 수
+    int reviewdisplayrowcount=0;				//한 페이지당 보여줄 개수
+    int reviewpagePercount = 5;
+    String reviewimagepath;
+    String reviewsearch;
     /**
      * 현재페이지와 경로 한번에 보여줄 열의 갯수를 세팅하는 생성자
-     * @param displayrowcount 한 페이지에 보여줄 게시글 수
-     * @param totalrowcount   조회해온 데이터의 전체 row수
-     * @param currentpagecount 현재 페이지 
-     * @param imagepath        이미지 경로 
+     * @param reviewdisplayrowcount 한 페이지에 보여줄 게시글 수
+     * @param reivewtotalrowcount   조회해온 데이터의 전체 row수
+     * @param reviewcurrentpagecount 현재 페이지 
+     * @param reviewimagepath        이미지 경로 
      * @exception java.lang.Exception
      */
-    public ReviewPageUtility(int displayrowcount, int totalrowcount, int currentpagecount, String imagepath)
+    public ReviewPageUtility(int reviewdisplayrowcount, int reivewtotalrowcount, int reviewcurrentpagecount, String reviewimagepath)
     {
-        this.displayrowcount = displayrowcount;
-        this.totalrowcount = totalrowcount;
-        this.currentpagecount = currentpagecount;
-        this.imagepath = imagepath	;
-        this.totalpagecount=totalrowcount/displayrowcount;
-        if(totalrowcount%displayrowcount!=0){
-          this.totalpagecount++;
+        this.reviewdisplayrowcount = reviewdisplayrowcount;
+        this.reivewtotalrowcount = reivewtotalrowcount;
+        this.reviewcurrentpagecount = reviewcurrentpagecount;
+        this.reviewimagepath = reviewimagepath	;
+        this.reviewtotalpagecount=reivewtotalrowcount/reviewdisplayrowcount;
+        if(reivewtotalrowcount%reviewdisplayrowcount!=0){
+          this.reviewtotalpagecount++;
         }
         
     }
    
     public String getCurrentPageCount()
     {
-        return String.valueOf(currentpagecount);
+        return String.valueOf(reviewcurrentpagecount);
     }
     /**
      * 목록에 출력할 page link를 구성한다.
@@ -54,60 +54,60 @@ public class ReviewPageUtility {
     public String getPageBar()    {
   		
         StringBuffer sb=new StringBuffer();
-        firstpagecount=((currentpagecount-1)/pagePercount*pagePercount)+1;
-        lastpagecount=firstpagecount+pagePercount;
+        reviewfirstpagecount=((reviewcurrentpagecount-1)/reviewpagePercount*reviewpagePercount)+1;
+        reviewlastpagecount=reviewfirstpagecount+reviewpagePercount;
 
-        beforetenpage=firstpagecount-pagePercount;
-        beforetenpage= beforetenpage<1?1:beforetenpage;
-        nexttenpage=lastpagecount;
+        reviewbeforetenpage=reviewfirstpagecount-reviewpagePercount;
+        reviewbeforetenpage= reviewbeforetenpage<1?1:reviewbeforetenpage;
+        reivewnexttenpage=reviewlastpagecount;
         
-        System.out.println("firstpagecount:"+firstpagecount);
-        System.out.println("lastpagecount:"+lastpagecount);
-        System.out.println("beforetenpage:"+beforetenpage);
-        System.out.println("nexttenpage:"+nexttenpage);
+        System.out.println("reviewfirstpagecount:"+reviewfirstpagecount);
+        System.out.println("reviewlastpagecount:"+reviewlastpagecount);
+        System.out.println("reviewbeforetenpage:"+reviewbeforetenpage);
+        System.out.println("reivewnexttenpage:"+reivewnexttenpage);
         
         
-        if(beforetenpage<1)     beforetenpage=1;
-        if(nexttenpage>totalpagecount)
-            nexttenpage=(((totalpagecount-1)/pagePercount)+1)*pagePercount;
-        if(lastpagecount>totalpagecount)
-            lastpagecount = totalpagecount+1;
+        if(reviewbeforetenpage<1)     reviewbeforetenpage=1;
+        if(reivewnexttenpage>reviewtotalpagecount)
+            reivewnexttenpage=(((reviewtotalpagecount-1)/reviewpagePercount)+1)*reviewpagePercount;
+        if(reviewlastpagecount>reviewtotalpagecount)
+            reviewlastpagecount = reviewtotalpagecount+1;
 		
-        if(firstpagecount>pagePercount)
-            sb.append(" <a href='javascript:reviewPagelist("+beforetenpage+")'><img src=\""+imagepath+"btn_first.gif\" border='0'  hspace='3' align='absmiddle'></a>&nbsp;&nbsp;");
+        if(reviewfirstpagecount>reviewpagePercount)
+            sb.append(" <a href='javascript:reviewPagelist("+reviewbeforetenpage+")'><img src=\""+reviewimagepath+"btn_first.gif\" border='0'  hspace='3' align='absmiddle'></a>&nbsp;&nbsp;");
         else
-            sb.append("<img src=\""+imagepath+"btn_first.gif\" border='0'  align=absmiddle>&nbsp;&nbsp;");
+            sb.append("<img src=\""+reviewimagepath+"btn_first.gif\" border='0'  align=absmiddle>&nbsp;&nbsp;");
 
-        if(((currentpagecount-1)/pagePercount*pagePercount)+1>beforetenpage)
-            sb.append("<a href='javascript:reviewPagelist("+ beforetenpage+")'><img src=\""+imagepath+"btn_prev.gif\" border='0' hspace='3' align=absmiddle></a>&nbsp;&nbsp;");
+        if(((reviewcurrentpagecount-1)/reviewpagePercount*reviewpagePercount)+1>reviewbeforetenpage)
+            sb.append("<a href='javascript:reviewPagelist("+ reviewbeforetenpage+")'><img src=\""+reviewimagepath+"btn_prev.gif\" border='0' hspace='3' align=absmiddle></a>&nbsp;&nbsp;");
         else
-            sb.append("<img src=\""+imagepath+"btn_prev.gif\" border='0'   align=absmiddle>&nbsp;&nbsp;");
+            sb.append("<img src=\""+reviewimagepath+"btn_prev.gif\" border='0'   align=absmiddle>&nbsp;&nbsp;");
 
-        for (int i = firstpagecount; i < lastpagecount; i++)
+        for (int i = reviewfirstpagecount; i < reviewlastpagecount; i++)
         {
-            if(i<=totalpagecount)
+            if(i<=reviewtotalpagecount)
             {
-                if (i == currentpagecount)
+                if (i == reviewcurrentpagecount)
                     sb.append("<b>" + i + "</b>");
                 else
                     sb.append("<a href='javascript:reviewPagelist("+i+")'>" + i + "</a>");
-                if( i !=lastpagecount-1)
+                if( i !=reviewlastpagecount-1)
                     sb.append(" . ");
             }
         }
 
-        if(nexttenpage<((totalpagecount-1)/pagePercount+1)*pagePercount)
-            sb.append("&nbsp;&nbsp;<a href='javascript:ReviewreviewPagelist("+ (nexttenpage)+ ")'><img src=\""+imagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle></a>");
+        if(reivewnexttenpage<((reviewtotalpagecount-1)/reviewpagePercount+1)*reviewpagePercount)
+            sb.append("&nbsp;&nbsp;<a href='javascript:reviewPagelist("+ (reivewnexttenpage)+ ")'><img src=\""+reviewimagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle></a>");
         else
-            sb.append("&nbsp;&nbsp;<img src=\""+imagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle>");
+            sb.append("&nbsp;&nbsp;<img src=\""+reviewimagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle>");
 
-        if((((currentpagecount-1)/pagePercount)+1)*pagePercount < nexttenpage)
-            sb.append("&nbsp;&nbsp;<a href='javascript:reviewPagelist("+ (nexttenpage)+")'><img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle></a>");
+        if((((reviewcurrentpagecount-1)/reviewpagePercount)+1)*reviewpagePercount < reivewnexttenpage)
+            sb.append("&nbsp;&nbsp;<a href='javascript:reviewPagelist("+ (reivewnexttenpage)+")'><img src=\""+reviewimagepath+"btn_end.gif\" border='0' align=absmiddle></a>");
         else
-            sb.append("&nbsp;&nbsp;<img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle>");
+            sb.append("&nbsp;&nbsp;<img src=\""+reviewimagepath+"btn_end.gif\" border='0' align=absmiddle>");
         return sb.toString();
     }
-    public String getTotalPageCount() {       
-    	return String.valueOf(totalpagecount);
+    public String getTotalpagecount() {       
+    	return String.valueOf(reviewtotalpagecount);
     }
 }

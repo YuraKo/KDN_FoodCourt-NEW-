@@ -9,6 +9,16 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
  
    <title>KDN Restaurant</title>
+ 	 
+<script src="js/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.mixitup.min.js"></script>
+<link href="css/magnific-popup.css" rel="stylesheet">
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/theme.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="https://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
  
  <script type="text/javascript">
  function getBoard(rno){
@@ -227,7 +237,9 @@
          <div class="modal-header">
                 <h4>Update Review</h4><br/>
          </div>
-	 	<form method="post" action="updateReview.do" enctype="multipart/form-data" >
+	 	<form method="post" action="updateReview.do"  >
+	 		<input type="hidden"  name="rno"  id='rno'  />
+	 		<input type="hidden"  name="ifname"  id='ifname'/>
 						<table align="center" width="300">
 						<tr><th colspan="2"> 게시글 수정 </th></tr>
 						<tr height="50"><td><label for="title" value="${spoint}">별점</label></td>
@@ -592,17 +604,7 @@
         </div>
     </div>
 </footer>
- 
-<script src="js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery.mixitup.min.js"></script>
-<link href="css/magnific-popup.css" rel="stylesheet">
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/theme.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script type="text/javascript" src="https://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
- 
+
 <script type="text/javascript">
     jQuery(function($) {
         // Mix It Up Gallery and Magnific Popup setup

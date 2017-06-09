@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.kdn.model.domain.PageBean;
 import com.kdn.model.domain.Review;
 import com.kdn.model.domain.ReviewPageBean;
 import com.kdn.model.domain.UpdateException;
-import com.kdn.util.PageUtility;
 import com.kdn.util.ReviewPageUtility;
 
 @Service("reviewService")
@@ -83,7 +81,6 @@ public class ReviewServiceImpl implements ReviewService {
 			ReviewPageUtility bar = new ReviewPageUtility(bean.getInterval(), total, bean.getPageNo(), "/images");
 			System.out.println("bar"+bar);
 			bean.setPagelink(bar.getPageBar());
-			System.out.println("bean"+bean);
 
 			return dao.searchAll(bean);
 

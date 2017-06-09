@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*,com.kdn.model.domain.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="pageBean" class="com.kdn.model.domain.PageBean"
+<jsp:useBean id="reviewPageBean" class="com.kdn.model.domain.ReviewPageBean"
 	scope="request" />
 <!DOCTYPE html>
 <html>
@@ -14,18 +14,31 @@
 	//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
 	function reviewPagelist(cpage) {
 		//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
-		document.getElementById("pageNo").value = cpage;
-		var frm = document.getElementById("frm");
-		frm.action = "listReview.do";
-		frm.submit();
+		document.getElementById("reviewPageNo").value = cpage;
+		var rfrm = document.getElementById("rfrm");
+		rfrm.action = "listReview.do";
+		rfrm.submit();
 	}
 	//게시글 번호나 타이틀을 클릭하면 해당 게시글 요청을 위한 메서드 
-	function getBoard(no) {
+	function getReivewBoard(rno) {
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
 		document.getElementById("rno").value = rno;
-		var frm = document.getElementById("frm");
-		frm.action = "searchReview.do";
-		frm.submit();
+		var frm = document.getElementById("rfrm");
+		rfrm.action = "searchReview.do";
+		rfrm.submit();
+	}
+	
+	function updateform(rno, ifname, spoint, comments){
+		console.log('updateForm');
+		console.log('rno:'+rno);
+		console.log('fname:'+ifname);
+		console.log('spoint:'+spoint);
+		console.log('comments:'+comments);
+		$("#rno").val(rno);
+		$("#ifname").val(ifname);
+		$("#spoint").val(spoint);
+		$("#comments").val(comments);
+		
 	}
 </script>
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
@@ -37,8 +50,8 @@
 </head>
 <body>
 	<div class="main">
-		<form id="frm">
-			<input type="hidden" id="pageNo" name="pageNo" value="1" /> <input
+		<form id="rfrm">
+			<input type="hidden" id="reviewPageNo" name="reviewPageNo" value="1" /> <input
 				type="hidden" id="no" name="no" />
 
 			<div class="container">
@@ -52,11 +65,11 @@
 									<div class="col col-xs-6">
 										<select name="key" id="key" class="btn btn-success btn-filter">
 											<option value="all">-----all-----</option>
-											<option value="rno" <%=pageBean.getKey("rno")%>>리뷰번호</option>
-											<option value="mno" <%=pageBean.getKey("mno")%>>사원번호</option>
-											<option value="fname" <%=pageBean.getKey("fname")%>>음식이름</option>
-											<option value="spoint" <%=pageBean.getKey("spoint")%>>별점</option>
-											<option value="comments" <%=pageBean.getKey("comments")%>>코멘트</option>
+											<option value="rno" <%=reviewPageBean.getKey("rno")%>>리뷰번호</option>
+											<option value="mno" <%=reviewPageBean.getKey("mno")%>>사원번호</option>
+											<option value="fname" <%=reviewPageBean.getKey("fname")%>>음식이름</option>
+											<option value="spoint" <%=reviewPageBean.getKey("spoint")%>>별점</option>
+											<option value="comments" <%=reviewPageBean.getKey("comments")%>>코멘트</option>
 										</select> <input type="text" id="word" name="word"
 											value="${reviewPageBean.word}"
 											class="btn btn-default btn-filter"> <a href="#"
@@ -91,7 +104,7 @@
 
 												<td align="center"> <c:if
 														test="${ mno == reviewBoard.mno }">  
-														<a href="#" class="btn btn-default" data-toggle="modal" data-target="#updateReviewModal" > 
+														<a href="#" class="btn btn-default" data-toggle="modal" data-target="#updateReviewModal"  onclick="updateform(${reviewBoard.mno },'${reviewBoard.fname }', ${reviewBoard.spoint },'${reviewBoard.comments}')"> 
 														<em class="fa fa-pencil"></em></a>
 														<a href="#" class="btn btn-danger"><em
 															class="fa fa-trash"

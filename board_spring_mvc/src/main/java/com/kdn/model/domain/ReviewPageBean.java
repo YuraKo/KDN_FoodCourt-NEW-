@@ -3,48 +3,94 @@ package com.kdn.model.domain;
 import java.io.Serializable;
 public class ReviewPageBean implements Serializable {
 	/**
-	 * key : 검색 조건
-	 * word: 검색 단어
-	 * pagelink : 목록의 페이지 링크를 표시
+	 * reviewKey : 검색 조건
+	 * reviewWord: 검색 단어
+	 * reviewPagelink : 목록의 페이지 링크를 표시
 	 */
-	private String key, word, pagelink;
-	private int pageNo, interval = 5, start=1 , end=interval ;
-	public String getKey() {
-		return key;
+	private String reviewKey, reviewWord, reviewPagelink;
+	private int reviewPageNo, reviewInterval = 5, reviewStart=1 , reviewEnd=reviewInterval ;
+	
+	
+	
+	public String getReviewKey() {
+		return reviewKey;
 	}
-	public void setKey(String key) {
-		if(key==null) this.key="all";
-		else this.key = key;
+	public void setReviewKey(String reviewKey) {
+		this.reviewKey = reviewKey;
+	}
+	public String getReviewWord() {
+		return reviewWord;
+	}
+	public void setReviewWord(String reviewWord) {
+		this.reviewWord = reviewWord;
+	}
+	public String getReviewPagelink() {
+		return reviewPagelink;
+	}
+	public void setReviewPagelink(String reviewPagelink) {
+		this.reviewPagelink = reviewPagelink;
+	}
+	public int getReviewPageNo() {
+		return reviewPageNo;
+	}
+	public void setReviewPageNo(int reviewPageNo) {
+		this.reviewPageNo = reviewPageNo;
+	}
+	public int getReviewInterval() {
+		return reviewInterval;
+	}
+	public void setReviewInterval(int reviewInterval) {
+		this.reviewInterval = reviewInterval;
+	}
+	public int getReviewStart() {
+		return reviewStart;
+	}
+	public void setReviewStart(int reviewStart) {
+		this.reviewStart = reviewStart;
+	}
+	public int getReviewEnd() {
+		return reviewEnd;
+	}
+	public void setReviewEnd(int reviewEnd) {
+		this.reviewEnd = reviewEnd;
+	}
+	//////////////////////////////////////////
+	public String getKey() {
+		return reviewKey;
+	}
+	public void setKey(String reviewKey) {
+		if(reviewKey==null) this.reviewKey="all";
+		else this.reviewKey = reviewKey;
 	}
 	public String getWord() {
-		return word;
+		return reviewWord;
 	}
-	public void setWord(String word) {
-		if(word==null) this.word = "";
-		else this.word = word;
+	public void setWord(String reviewWord) {
+		if(reviewWord==null) this.reviewWord = "";
+		else this.reviewWord = reviewWord;
 	}
 	public String getPagelink() {
-		return pagelink;
+		return reviewPagelink;
 	}
-	public void setPagelink(String pagelink) {
-		this.pagelink = pagelink;
+	public void setPagelink(String reviewPagelink) {
+		this.reviewPagelink = reviewPagelink;
 	}
 	public int getPageNo() {
-		return pageNo;
+		return reviewPageNo;
 	}
-	public void setPageNo(int pageNo) {
-		if(pageNo>0)this.pageNo = pageNo;
-		else this.pageNo=1;
+	public void setPageNo(int reviewPageNo) {
+		if(reviewPageNo>0)this.reviewPageNo = reviewPageNo;
+		else this.reviewPageNo=1;
 	}
-	public void setPageNo(String pageNo) {
+	public void setPageNo(String reviewPageNo) {
 		try {
-			this.pageNo = Integer.parseInt(pageNo);
+			this.reviewPageNo = Integer.parseInt(reviewPageNo);
 		} catch (Exception e) {
-			this.pageNo = 1;
+			this.reviewPageNo = 1;
 		}
 	}
 	public String getKey(String k){
-		if(k!=null && key.equals(k)) return "selected='selected'";
+		if(k!=null && reviewKey.equals(k)) return "selected='selected'";
 		else return "";
 	}
 	public ReviewPageBean(){
@@ -53,50 +99,53 @@ public class ReviewPageBean implements Serializable {
 		setPagelink("1");
 		setPageNo(1);
 	}
-	public ReviewPageBean(String key, String word, String pagelink, int pageNo) {
-		setKey(key);
-		setWord(word);
-		setPagelink(pagelink);
-		setPageNo(pageNo);
+	public ReviewPageBean(String reviewKey, String reviewWord, String reviewPagelink, int reviewPageNo) {
+		setKey(reviewKey);
+		setWord(reviewWord);
+		setPagelink(reviewPagelink);
+		setPageNo(reviewPageNo);
 	}
-	public ReviewPageBean(String key, String word, String pagelink, String pageNo) {
-		setKey(key);
-		setWord(word);
-		setPagelink(pagelink);
-		setPageNo(pageNo);
+	public ReviewPageBean(String reviewKey, String reviewWord, String reviewPagelink, String reviewPageNo) {
+		setKey(reviewKey);
+		setWord(reviewWord);
+		setPagelink(reviewPagelink);
+		setPageNo(reviewPageNo);
 	}
 	public int getInterval() {
-		return interval;
+		return reviewInterval;
 	}
-	public void setInterval(int interval) {
-		this.interval = interval;
+	public void setInterval(int reviewInterval) {
+		this.reviewInterval = reviewInterval;
 	}
 	public int getStart() {
-		if(pageNo>1){
-			return start =  (pageNo -1) * interval + 1;
+		if(reviewPageNo>1){
+			return reviewStart =  (reviewPageNo -1) * reviewInterval + 1;
 		}else{
 			return   1;
 		}
 	}
-	public void setStart(int start) {
-		this.start = start;
+	public void setStart(int reviewStart) {
+		this.reviewStart = reviewStart;
 	}
 	public int getEnd() {
-			return start+interval - 1;
+			return reviewStart+reviewStart - 1;
 	}
-	public void setEnd(int end) {
-		this.end =end;
+	public void setEnd(int reviewEnd) {
+		this.reviewEnd =reviewEnd;
 	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("PageBean [key=").append(key).append(", word=")
-				.append(word).append(", pagelink=").append(pagelink)
-				.append(", pageNo=").append(pageNo).append(", interval=")
-				.append(interval).append(", start=").append(start)
-				.append(", end=").append(end).append("]");
+		builder.append("ReviewPageBean [reviewKey=").append(reviewKey)
+				.append(", reviewWord=").append(reviewWord)
+				.append(", reviewPagelink=").append(reviewPagelink)
+				.append(", reviewPageNo=").append(reviewPageNo)
+				.append(", reviewInterval=").append(reviewInterval)
+				.append(", reviewStart=").append(reviewStart)
+				.append(", reviewEnd=").append(reviewEnd).append("]");
 		return builder.toString();
 	}
+	
 }
 
 

@@ -60,6 +60,7 @@ public class ReviewController {
 	public String listReview(ReviewPageBean bean, Model model, NoticePageBean noticebean) {
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
+		model.addAttribute("reviewPageBean", bean);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		
 		System.out.println("NoticeBoardController.listBoard>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
