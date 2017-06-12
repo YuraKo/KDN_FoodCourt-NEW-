@@ -15,12 +15,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.MemberService;
+import com.kdn.model.biz.NoticeBoardService;
+import com.kdn.model.biz.ReviewService;
+import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.Member;
+import com.kdn.model.domain.NoticeBoard;
+import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
+import com.kdn.model.domain.Review;
+import com.kdn.model.domain.ReviewPageBean;
 
 @Controller
 public class MemberController {
+	@Autowired
+	NoticeBoardService	noticeBoardService;
+	
+	@Autowired
+	ReviewService reviewService;
+	
+	@Autowired
+	DietService dietService;
 	
 	@Autowired
 	private MemberService memberService;
@@ -35,7 +51,19 @@ public class MemberController {
 	
 	//등록
 	@RequestMapping(value="registerForm.do", method=RequestMethod.GET)
-	public String insertMemberForm(Model model) {
+	public String insertMemberForm(NoticePageBean noticebean, Model model, ReviewPageBean bean) {
+		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
+		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		
+		List<Diet> dietList = dietService.searchAll();
+		model.addAttribute("dietList", dietList);
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		
 		model.addAttribute("content", "member/register.jsp");
 		return "index";
 	}
@@ -68,7 +96,19 @@ public class MemberController {
 	
 	//myPage
 	@RequestMapping(value="myPage.do", method=RequestMethod.GET)
-	public String myPage(HttpSession session, Model model) {
+	public String myPage(HttpSession session, NoticePageBean noticebean, Model model, ReviewPageBean bean) {
+		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
+		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		
+		List<Diet> dietList = dietService.searchAll();
+		model.addAttribute("dietList", dietList);
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		
 		int mno = (Integer) session.getAttribute("mno");
 		System.out.println(memberService.search(mno));
 		model.addAttribute("member", memberService.search(mno));

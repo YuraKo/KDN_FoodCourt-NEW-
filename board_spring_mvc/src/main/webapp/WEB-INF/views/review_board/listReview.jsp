@@ -28,7 +28,7 @@
 		rfrm.submit();
 	}
 	
-	function updateform(rno, ifname, spoint, comments){
+	function updateform(rno, mno, ifname, spoint, comments){
 		console.log('updateForm');
 		console.log('rno:'+rno);
 		console.log('fname:'+ifname);
@@ -38,7 +38,7 @@
 		$("#ifname").val(ifname);
 		$("#spoint").val(spoint);
 		$("#comments").val(comments);
-		
+		$("#update").val(spoint);
 	}
 </script>
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
@@ -63,7 +63,7 @@
 							<div class="panel-heading">
 								<div class="row">
 									<div class="col col-xs-6">
-										<select name="key" id="key" class="btn btn-success btn-filter">
+										<select name="key" id="key">
 											<option value="all">-----all-----</option>
 											<option value="rno" <%=reviewPageBean.getKey("rno")%>>리뷰번호</option>
 											<option value="mno" <%=reviewPageBean.getKey("mno")%>>사원번호</option>
@@ -71,8 +71,7 @@
 											<option value="spoint" <%=reviewPageBean.getKey("spoint")%>>별점</option>
 											<option value="comments" <%=reviewPageBean.getKey("comments")%>>코멘트</option>
 										</select> <input type="text" id="word" name="word"
-											value="${reviewPageBean.word}"
-											class="btn btn-default btn-filter"> <a href="#"
+											value="${reviewPageBean.word}"> <a href="#"
 											onclick="pagelist(1)" class="btn btn-danger btn-filter">검색</a>
 
 									</div>
@@ -102,9 +101,9 @@
 										<c:forEach var="reviewBoard" items="${list}">
 											<tr>
 
-												<td align="center"> <c:if
-														test="${ mno == reviewBoard.mno }">  
-														<a href="#" class="btn btn-default" data-toggle="modal" data-target="#updateReviewModal"  onclick="updateform(${reviewBoard.mno },'${reviewBoard.fname }', ${reviewBoard.spoint },'${reviewBoard.comments}')"> 
+												<td align="center"> 
+														<c:if test="${ mno == reviewBoard.mno }">  
+														<a href="#" class="btn btn-default" data-toggle="modal" data-target="#updateReviewModal"  onclick="updateform(${reviewBoard.rno },${reviewBoard.mno },'${reviewBoard.fname }', ${reviewBoard.spoint },'${reviewBoard.comments}')"> 
 														<em class="fa fa-pencil"></em></a>
 														<a href="#" class="btn btn-danger"><em
 															class="fa fa-trash"
@@ -194,17 +193,13 @@
 
 
 	<script type="text/javascript">
-		$(document).ready(
-				function() {
-
+		$(document).ready(function(){
 					$('.star').on('click', function() {
 						$(this).toggleClass('star-checked');
 					});
-
 					$('.ckbox label').on('click', function() {
 						$(this).parents('tr').toggleClass('selected');
 					});
-
 					$('.btn-filter').on(
 							'click',
 							function() {
@@ -219,7 +214,6 @@
 											.fadeIn('slow');
 								}
 							});
-
 				});
 	</script>
 </body>

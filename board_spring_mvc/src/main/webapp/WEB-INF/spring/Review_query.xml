@@ -18,7 +18,7 @@
 	
 	<update id="update" parameterType="review">
 	update reviewboard set SPOINT=#{spoint:INTEGER}, COMMENTS=#{comments:VARCHAR}
-	where mno= 0
+	where rno= #{rno}
 	</update>
 	
 	<delete id="delete" parameterType="int">
@@ -57,7 +57,7 @@
 			</choose>
 		</if>
 		</where>
-		
+		order by rno desc
 		
 	</select>	
 	<select id="getCount" parameterType="reviewpagebean" resultType="int" >

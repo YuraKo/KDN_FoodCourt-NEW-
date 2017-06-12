@@ -7,6 +7,8 @@ import java.util.List;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
@@ -25,20 +29,22 @@ import com.kdn.model.domain.ReviewPageBean;
 
 @Controller
 public class ReviewController {
-	
-//	@ExceptionHandler
-//	public ModelAndView handler(Exception e) {
-//		ModelAndView model = new ModelAndView("index");
-//		model.addObject("msg", e.getMessage()); //request占쎈퓠 占쏙옙占쎌삢
-//		model.addObject("reviewBoardContent", "ErrorHandler.jsp"); //request占쎈퓠 占쏙옙占쎌삢
-//		return model;
-//		
-//	}
 	@Autowired
-	private ReviewService reviewService;
+	NoticeBoardService	noticeBoardService;
 	
 	@Autowired
-	private NoticeBoardService noticeBoardService;
+	ReviewService reviewService;
+	
+	@Autowired
+	DietService dietService;
+	
+	@ExceptionHandler
+	public ModelAndView handler(Exception e) {
+		ModelAndView model = new ModelAndView("index");
+		model.addObject("msg", e.getMessage()); 
+		model.addObject("reviewBoardContent", "ErrorHandler.jsp"); 
+		return model;
+	}
 	
 	@RequestMapping(value="insertReviewForm.do", method=RequestMethod.GET)
 	public String insertBoardForm(Model model) {
@@ -51,6 +57,7 @@ public class ReviewController {
 	}
 	@RequestMapping(value="updateReview.do", method=RequestMethod.POST)
 	public String updateBoard(Review review) {
+		System.out.println("this is update review : " + review);
 		reviewService.update(review);
 		System.out.println(review);
 		return "redirect:listReview.do";
@@ -63,12 +70,16 @@ public class ReviewController {
 		model.addAttribute("reviewPageBean", bean);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		
-		System.out.println("NoticeBoardController.listBoard>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		System.out.println("NoticePageBean>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noticebean);
+		
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticePageBean", noticebean);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		
+		List<Diet> dietList = dietService.searchAll();
+		model.addAttribute("dietList", dietList);
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		
 		return "index";
 
 	}
@@ -78,17 +89,6 @@ public class ReviewController {
 		model.addAttribute("reviewBoard", reviewService.search(no));
 		model.addAttribute("reviewBoardContent", "review_board/searchBoard.jsp");
 		return "index";
-		
 	}
-
-
-	@RequestMapping(value="test2.do", method=RequestMethod.GET)
-	public String test(int rno, Model model) {
-		model.addAttribute("reviewBoard", reviewService.search(rno));
-		model.addAttribute("reviewBoardContent", "review_board/searchBoard.jsp");
-		return "index";
-		
-	}
-
 
 }

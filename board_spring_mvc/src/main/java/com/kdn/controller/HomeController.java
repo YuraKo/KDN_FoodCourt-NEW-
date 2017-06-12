@@ -56,7 +56,6 @@ public class HomeController {
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
-		System.out.println("dietList : " + dietList);
 		model.addAttribute("dietList", dietList);
 		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
 		return "index";

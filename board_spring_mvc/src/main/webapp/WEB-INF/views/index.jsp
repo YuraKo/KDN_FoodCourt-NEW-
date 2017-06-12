@@ -28,6 +28,8 @@
 		frm.action="test2.do";
 		frm.submit();
 	}
+
+ }
  </script>
    <!-- CSS includes -->
    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -202,28 +204,35 @@
       <div class="modal-content">
          <div class="modal-header">
                 <h4>Insert Review</h4><br/>
-                    <form method="post" action="insertReview.do" enctype="multipart/form-data" >
-						<table align="center" width="300">
-						<tr><th colspan="2"> 게시글 작성 </th></tr>
-						<tr height="50"><td><label for="title" value="${mno }">아이디</label></td>
-			    		<td><input type="text" name="mno" id="mno"/></td>
-						</tr>
-						<tr height="50"><td><label for="title" value="${spoint}">별점</label></td>
-			    		<td><input type="text" name="spoint" id="spoint"/></td>
-						</tr>
-						<tr height="50"><td><label for="title" value="${fmno}">음식이름</label></td>
-			    		<td><input type="text" name="fname" id="fname"/></td>
-						</tr>
-						<tr><td colspan="2"><label for="contents" >코멘트</label></td></tr>
-						<tr><td colspan="2" align="center">
-			    		<textarea name="comments" id="comments" cols="30" rows="5"></textarea>
-						</td></tr>
-						<tr><td colspan="2" align="center">
-						<input type="submit" value="작성"/>
-						<input type="reset" value="취소"/>
-						</td></tr>
-	</table>
-</form>
+                	<c:if test = "${!empty mno}">
+	                    <form method="post" action="insertReview.do" enctype="multipart/form-data" >
+							<table align="center" width="300">
+								<tr><th colspan="2"> 게시글 작성 </th></tr>
+								<tr height="50"><td><label for="title" >아이디</label></td>
+					    		<td><input type="text" name="mno" id="mno" value="${mno }"/></td>
+								</tr>
+								<tr height="50"><td><label for="title" >별점</label></td>
+					    		<td><input type="text" name="spoint" id="spoint" /></td>
+								</tr>
+								<tr height="50"><td><label for="title" >음식이름</label></td>
+					    		<td><input type="text" name="fname" id="fname" /></td>
+								</tr>
+								<tr><td colspan="2"><label for="contents" >코멘트</label></td></tr>
+								<tr><td colspan="2" align="center">
+					    		<textarea name="comments" id="comments" cols="30" rows="5"></textarea>
+								</td></tr>
+								<tr><td colspan="2" align="center">
+								<input type="submit" value="작성"/>
+								<input type="reset" value="취소"/>
+								</td></tr>
+							</table>
+						</form>
+						</c:if>
+						<c:if test = "${empty mno }">
+							<span>
+								로그인 후에 리뷰를 작성할 수 있습니다.
+							</span>
+						</c:if>
                     <hr>
          </div>
       </div> <!-- /.modal-content -->
@@ -237,13 +246,16 @@
          <div class="modal-header">
                 <h4>Update Review</h4><br/>
          </div>
-	 	<form method="post" action="updateReview.do"  >
-	 		<input type="hidden"  name="rno"  id='rno'  />
-	 		<input type="hidden"  name="ifname"  id='ifname'/>
-						<table align="center" width="300">
+         
+			 	<form method="post" action="updateReview.do"  >
+			 		<input type="hidden"  name="rno"  id='rno'  />
+			 		<input type="hidden"  name="ifname"  id='ifname'/>
+					<table align="center" width="300">
 						<tr><th colspan="2"> 게시글 수정 </th></tr>
-						<tr height="50"><td><label for="title" value="${spoint}">별점</label></td>
-			    		<td><input type="text" name="spoint" id="spoint"/></td>
+						<tr height="50"><td><label for="title" >별점</label></td>
+			    		<td>
+			    			<input type="text" name="spoint" id="update"/>
+			    		</td>
 						</tr>
 						<tr><td colspan="2"><label for="contents" >코멘트</label></td></tr>
 						<tr><td colspan="2" align="center">
@@ -253,11 +265,8 @@
 						<input type="submit" value="작성"/>
 						<input type="reset" value="취소"/>
 						</td></tr>
-	</table>
-</form>
-	
-                
-         
+					</table>
+				</form>
       </div> <!-- /.modal-content -->
    </div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
@@ -363,9 +372,14 @@
 			<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
 			<div class="row">
 				<div class="col-md-3 text-center">
-					<article id="weeklyMenuContent">
-						<jsp:include page="${weeklyMenuContent}"/>
-					</article>
+					<c:if test = "${!empty addMenuContent}">
+						<jsp:include page="${addMenuContent}"/>	
+					</c:if>
+					<c:if test = "${empty addMenuContent}">
+						<article id="weeklyMenuContent">
+							<jsp:include page="${weeklyMenuContent}"/>
+						</article>
+					</c:if>
 				</div>
 			</div>
 		</div>
