@@ -29,22 +29,23 @@ import com.kdn.model.domain.ReviewPageBean;
 
 @Controller
 public class ReviewController {
+	
+//	@ExceptionHandler
+//	public ModelAndView handler(Exception e) {
+//		ModelAndView model = new ModelAndView("index");
+//		model.addObject("msg", e.getMessage()); //request?좎럥???좎룞?쇿뜝?뚯궋
+//		model.addObject("reviewBoardContent", "ErrorHandler.jsp"); //request?좎럥???좎룞?쇿뜝?뚯궋
+//		return model;
+//		
+//	}
 	@Autowired
-	NoticeBoardService	noticeBoardService;
+	private ReviewService reviewService;
 	
 	@Autowired
-	ReviewService reviewService;
+	private NoticeBoardService noticeBoardService;
 	
 	@Autowired
-	DietService dietService;
-	
-	@ExceptionHandler
-	public ModelAndView handler(Exception e) {
-		ModelAndView model = new ModelAndView("index");
-		model.addObject("msg", e.getMessage()); 
-		model.addObject("reviewBoardContent", "ErrorHandler.jsp"); 
-		return model;
-	}
+	private DietService dietService;
 	
 	@RequestMapping(value="insertReviewForm.do", method=RequestMethod.GET)
 	public String insertBoardForm(Model model) {
@@ -52,14 +53,14 @@ public class ReviewController {
 	}
 	@RequestMapping(value="insertReview.do", method=RequestMethod.POST)
 	public String insertBoard(Review review) {
+		System.out.println("this is review : " + review);
 		reviewService.add(review);
 		return "redirect:listReview.do";
 	}
 	@RequestMapping(value="updateReview.do", method=RequestMethod.POST)
 	public String updateBoard(Review review) {
-		System.out.println("this is update review : " + review);
 		reviewService.update(review);
-		System.out.println(review);
+		System.out.println("review : "+review);
 		return "redirect:listReview.do";
 	}
 	
@@ -70,16 +71,17 @@ public class ReviewController {
 		model.addAttribute("reviewPageBean", bean);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		
-		
+		System.out.println("NoticeBoardController.listBoard>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		System.out.println("NoticePageBean>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noticebean);
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticePageBean", noticebean);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
+		System.out.println("dietList : " + dietList);
 		model.addAttribute("dietList", dietList);
 		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
-		
 		return "index";
 
 	}
@@ -89,6 +91,23 @@ public class ReviewController {
 		model.addAttribute("reviewBoard", reviewService.search(no));
 		model.addAttribute("reviewBoardContent", "review_board/searchBoard.jsp");
 		return "index";
+		
 	}
+	@RequestMapping(value="deleteReview.do", method=RequestMethod.POST)
+	public String deleteReview(int rno){
+		System.out.println("rno"+rno);
+		reviewService.remove(rno);
+		return "redirect:listReview.do";
+	}
+	
+
+	@RequestMapping(value="test2.do", method=RequestMethod.GET)
+	public String test(int rno, Model model) {
+		model.addAttribute("reviewBoard", reviewService.search(rno));
+		model.addAttribute("reviewBoardContent", "review_board/searchBoard.jsp");
+		return "index";
+		
+	}
+
 
 }

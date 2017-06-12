@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*,com.kdn.model.domain.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="reviewPageBean" class="com.kdn.model.domain.ReviewPageBean"
-	scope="request" />
+<jsp:useBean id="reviewPageBean"
+	class="com.kdn.model.domain.ReviewPageBean" scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,22 +23,31 @@
 	function getReivewBoard(rno) {
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
 		document.getElementById("rno").value = rno;
-		var frm = document.getElementById("rfrm");
+		var rfrm = document.getElementById("rfrm");
 		rfrm.action = "searchReview.do";
 		rfrm.submit();
 	}
 	
-	function updateform(rno, mno, ifname, spoint, comments){
+ 	function removeForm(rno){
+		$('#rno').val(rno);	
+		$('#checkForm').modal();
+	} 
+ 	
+ 	
+	function updateform(urno, umno, ufname, uspoint, ucomments){
 		console.log('updateForm');
-		console.log('rno:'+rno);
-		console.log('fname:'+ifname);
-		console.log('spoint:'+spoint);
-		console.log('comments:'+comments);
-		$("#rno").val(rno);
-		$("#ifname").val(ifname);
-		$("#spoint").val(spoint);
-		$("#comments").val(comments);
-		$("#update").val(spoint);
+		console.log('rno:'+urno);
+		console.log('mno:'+umno);
+		console.log('fname:'+ufname);
+		console.log('spoint:'+uspoint);
+		console.log('comments:'+ucomments);
+		$("#urno").val(urno);
+		$("#umno").val(umno);
+		$("#ufname").val(ufname);
+		$("#uspoint").val(uspoint);
+		$("#ucomments").val(ucomments);
+		$('#updateForm').modal();
+		
 	}
 </script>
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
@@ -49,10 +58,92 @@
 </style>
 </head>
 <body>
+	<div style="overflow: hidden" id="updateForm" class="modal fade"
+		tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 style="color: blue">
+						<span class="glyphicon glyphicon-exclamation-sign"></span><label
+							id="modal-title">수정 포멧</label>
+					</h4>
+				</div>
+				<div class="modal-body" id="modal-body">
+
+					<form method="post" action="updateReview.do"
+						enctype="multipart/form-data">
+						
+						<table align="center" width="300">
+							<tr>
+								<th colspan="2">게시글 작성</th>
+							</tr>
+							<tr height="50">
+								<td><label for="title">번호</label></td>
+								<td><input type="hidden" name="rno" id="urno"
+									value="${urno }" /></td>
+							</tr>
+							<tr height="50">
+								<td><label for="title">아이디</label></td>
+								<td><input type="hidden" name="mno" id="mno"
+									value="${mno }" /></td>
+							</tr>
+							<tr height="50">
+								<td><label for="title">별점</label></td>
+								<td><input type="text" name="spoint" id="spoint" /></td>
+							</tr>
+							<tr height="50">
+								<td><label for="title">음식이름</label></td>
+								<td><input type="text" name="fname" id="fname" /></td>
+							</tr>
+							<tr>
+								<td colspan="2"><label for="contents">코멘트</label></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><textarea name="comments"
+										id="comments" cols="30" rows="5"></textarea></td>
+							</tr>
+							<tr>
+								<button type="submit" class="btn btn-default btn-success">
+									<span class="glyphicon glyphicon-ok"></span> 수정
+								</button>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="overflow: hidden" id="checkForm" class="modal fade"
+		tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 style="color: blue">
+						<span class="glyphicon glyphicon-exclamation-sign"></span><label
+							id="modal-title">삭제 경고</label>
+					</h4>
+				</div>
+				<div class="modal-body" id="modal-body">
+					<form role="form" method="post" action="deleteReview.do">
+						정말 삭제하시겠습니까? <input type="hidden" id="rno" name="rno" value="" />
+						<button type="submit" class="btn btn-default btn-success">
+							<span class="glyphicon glyphicon-ok"></span> 삭제
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="main">
 		<form id="rfrm">
-			<input type="hidden" id="reviewPageNo" name="reviewPageNo" value="1" /> <input
-				type="hidden" id="no" name="no" />
+			<input type="hidden" id="reviewPageNo" name="reviewPageNo" value="1" />
+			<input type="hidden" id="no" name="no" />
 
 			<div class="container">
 				<div class="row">
@@ -69,21 +160,24 @@
 											<option value="mno" <%=reviewPageBean.getKey("mno")%>>사원번호</option>
 											<option value="fname" <%=reviewPageBean.getKey("fname")%>>음식이름</option>
 											<option value="spoint" <%=reviewPageBean.getKey("spoint")%>>별점</option>
-											<option value="comments" <%=reviewPageBean.getKey("comments")%>>코멘트</option>
+											<option value="comments"
+												<%=reviewPageBean.getKey("comments")%>>코멘트</option>
 										</select> <input type="text" id="word" name="word"
 											value="${reviewPageBean.word}"> <a href="#"
-											onclick="pagelist(1)" class="btn btn-danger btn-filter">검색</a>
+											onclick="reviewPagelist(1)" class="btn btn-danger btn-filter">검색</a>
 
 									</div>
 									<div class="col col-xs-6 text-right">
 										<c:if test="${ !empty mno }">
-											<a href="#"
-												class="btn btn-sm btn-primary btn-create"
+											<a href="#" class="btn btn-sm btn-primary btn-create"
 												data-toggle="modal" data-target="#reviewModal">글쓰기</a>
 										</c:if>
 									</div>
 								</div>
 							</div>
+
+
+
 							<div class="panel-body">
 								<table class="table table-striped table-bordered table-list">
 									<thead>
@@ -99,16 +193,19 @@
 									</thead>
 									<tbody>
 										<c:forEach var="reviewBoard" items="${list}">
-											<tr>
+											<tr id=${reviewBoard.rno }>
 
-												<td align="center"> 
-														<c:if test="${ mno == reviewBoard.mno }">  
-														<a href="#" class="btn btn-default" data-toggle="modal" data-target="#updateReviewModal"  onclick="updateform(${reviewBoard.rno },${reviewBoard.mno },'${reviewBoard.fname }', ${reviewBoard.spoint },'${reviewBoard.comments}')"> 
-														<em class="fa fa-pencil"></em></a>
-														<a href="#" class="btn btn-danger"><em
-															class="fa fa-trash"
-															data-toggle="modal" data-target="#deleteReviewModal"></em></a>
-													 </c:if>  </td>
+												<td align="center"><c:if
+														test="${ mno == reviewBoard.mno }">
+														<a href="#" class="btn btn-default" data-toggle="modal"
+															data-target="#updateReviewModal"
+															onclick="updateform(${reviewBoard.rno },${reviewBoard.mno },'${reviewBoard.fname }', ${reviewBoard.spoint },'${reviewBoard.comments}')">
+															<em class="fa fa-pencil"></em>
+														</a>
+														<a href="#" class="btn btn-danger"
+															onclick="removeForm(${reviewBoard.rno})"><em
+															class="fa fa-trash"></em></a>
+													</c:if></td>
 
 												<td class="hidden-xs">${reviewBoard.rno}</td>
 												<td>${reviewBoard.mno }</td>
@@ -124,6 +221,9 @@
 								</table>
 
 							</div>
+
+
+
 							<div class="panel-footer">
 								<div class="row">
 									<center>${reviewPageBean.pagelink }</center>
@@ -193,13 +293,17 @@
 
 
 	<script type="text/javascript">
-		$(document).ready(function(){
+		$(document).ready(
+				function() {
+
 					$('.star').on('click', function() {
 						$(this).toggleClass('star-checked');
 					});
+
 					$('.ckbox label').on('click', function() {
 						$(this).parents('tr').toggleClass('selected');
 					});
+
 					$('.btn-filter').on(
 							'click',
 							function() {
@@ -214,6 +318,7 @@
 											.fadeIn('slow');
 								}
 							});
+
 				});
 	</script>
 </body>

@@ -17,11 +17,12 @@
 	</insert>
 	
 	<update id="update" parameterType="review">
-	update reviewboard set SPOINT=#{spoint:INTEGER}, COMMENTS=#{comments:VARCHAR}
+	update reviewboard set SPOINT=#{spoint:INTEGER}, fname=#{fname:VARCHAR}, COMMENTS=#{comments:VARCHAR}
 	where rno= #{rno}
 	</update>
 	
 	<delete id="delete" parameterType="int">
+	 delete from reviewboard where rno=#{rno}
 	</delete>
 	
 	<select id="search" parameterType="int" resultType="review">
