@@ -125,6 +125,8 @@ public class MemberController {
 	
 	@RequestMapping(value="updateMember.do", method=RequestMethod.POST)
 	public void updateMember(Member member, Model model, HttpServletResponse response) throws IOException {
+		System.out.println("this is member" + member);
+		
 		memberService.update(member);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out= response.getWriter();

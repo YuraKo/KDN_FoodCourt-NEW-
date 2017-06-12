@@ -9,7 +9,7 @@ public class Member implements Serializable{
 	private String mname;
 	private String phone;
 	private String email;
-	private int pno;
+	private String prefer;
 
 	public Member(){
 		
@@ -22,15 +22,14 @@ public class Member implements Serializable{
 		this.phone = phone;
 		this.email = email;
 	}
-	
-	public Member(int mno, String password, String mname, String phone, String email, int pno) {
+	public Member(int mno, String password, String mname, String phone, String email, String prefer) {
 		super();
 		this.mno = mno;
 		this.password = password;
 		this.mname = mname;
 		this.phone = phone;
 		this.email = email;
-		this.pno = pno;
+		this.prefer = prefer;
 	}
 	
 	public int getMno() {
@@ -69,16 +68,35 @@ public class Member implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPno() {
-		return pno;
+
+	public String getPrefer() {
+		if(prefer!=null &&  prefer.startsWith(",")){
+			this.prefer = prefer.substring(1);
+		}
+		return prefer;
 	}
-	public void setPno(int pno) {
-		this.pno = pno;
+	public void setPrefer(String prefer) {
+		this.prefer = prefer;
 	}
 	@Override
 	public String toString() {
-		return "Member [mno=" + mno + ", grade=" + grade + ", password="
-				+ password + ", mname=" + mname + ", phone=" + phone
-				+ ", email=" + email + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("mno=");
+		builder.append(mno);
+		builder.append(", grade=");
+		builder.append(grade);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", mname=");
+		builder.append(mname);
+		builder.append(", phone=");
+		builder.append(phone);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", prefer=");
+		builder.append(getPrefer());
+		return builder.toString();
 	}
+
+	
 }

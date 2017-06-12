@@ -23,14 +23,30 @@
 		color: #ffffff;
 	}
 </style>
+<script>
+var array = "";
+function checkPrefer(){
+		console.log('checkPrefer........');
+		var pre = document.getElementsByName("prefer");
+		for(i=0;i < pre.length;i++){
+			if(pre[i].checked){
+				array += (pre[i].value + ',');
+			}
+		}
+		console.log(array);
+		pre.value = array;
+		$("#frm").submit();
+}	
+</script>
 </head>
 <body>
 <div id="container-register">
 <div class="container">
 <center>
-<form class="form-horizontal" action = "registerMember.do" method = "POST">
+<form class="form-horizontal" id = "frm" action = "registerMember.do" method = "POST">
 <fieldset>
 	<legend class="form-title">REGISTER</legend><br/>
+	<input type = "hidden" id = "prefer" name = "prefer" />
     <div class="form-group">
       <label class="col-lg-2 control-label" for="id">ID</label>
       <div class="col-lg-10">
@@ -64,11 +80,10 @@
     <div class="form-group">
       <label class="col-lg-2 control-label" for="checkbox">Menu</label>
       <div class="col-lg-10">
-        <input type="checkbox" value="김치찌개"/>김치찌개
-        <input type="checkbox" value="된장찌개"/>된장찌개
-        <input type="checkbox" value="부대찌개"/>부대찌개
-        <input type="checkbox" value="순두부찌개"/>순두부찌개
-        
+        <input type="checkbox" name="prefer" id="prefer" value="김치찌개">김치찌개
+        <input type="checkbox" name="prefer" id="prefer" value="된장찌개">된장찌개
+        <input type="checkbox" name="prefer" id="prefer" value="부대찌개">부대찌개
+        <input type="checkbox" name="prefer" id="prefer" value="순두부찌개">순두부찌개
         <span class="help-block">Please select the menu you want to receive notifications</span>
       </div>
     </div>
