@@ -62,8 +62,13 @@ public class NoticeBoardController {
 	DietService dietService;
 	
 	@RequestMapping(value="insertNoticeBoardForm.do", method=RequestMethod.GET)
-	public String insertBoardForm(Model model) {
+	public String insertBoardForm(Model model, ReviewPageBean bean) {
 		model.addAttribute("noticeBoardContent", "notice_board/insertBoard.jsp");
+		
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
+		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		
 		return "index";
 	}
 	@RequestMapping(value="insertNoticeBoard.do", method=RequestMethod.POST)

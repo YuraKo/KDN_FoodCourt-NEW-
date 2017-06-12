@@ -21,7 +21,7 @@
 	src="https://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<script>location.hash="ggokdaegi";</script>
 <script type="text/javascript">
  function getBoard(rno){
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
@@ -146,7 +146,7 @@
 }
 </style>
 <body>
-
+	<a naem="ggokdaegi"></a>
 	<!-- Navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
