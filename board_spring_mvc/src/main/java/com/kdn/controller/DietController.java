@@ -82,7 +82,6 @@ public class DietController {
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
-		
 		model.addAttribute("updateMenuContent", "weekly_menu/updateMenuForm.jsp");
 		
 		return "index";

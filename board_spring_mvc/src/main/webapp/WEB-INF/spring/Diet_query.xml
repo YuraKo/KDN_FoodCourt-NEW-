@@ -37,6 +37,18 @@
 		ORDER BY DIETDATE, SCODE
 	</select>
 	
+	<select id="searchPrefer" resultType="diet">
+	SELECT a.maindish maindish, b.mno mno
+	FROM(SELECT scode, maindish
+		 FROM DIET
+		 WHERE TO_CHAR(dietDate, 'yyyy-mm-dd') = TO_CHAR(SYSDATE, 'yyyy-mm-dd')
+		 ) a, (SELECT prefer , mno
+			  FROM member
+			  WHERE prefer IS not NULL ) b
+	WHERE b.prefer LIKE '%'||a.maindish||'%'
+	AND mno=#{mno:INTEGER}
+	</select>
+	
 	<select id = "search" parameterType="HashMap" resultType="diet">
 		select dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
 		from diet 
