@@ -49,11 +49,11 @@ public class HomeController {
 		 */
 		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
 		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
