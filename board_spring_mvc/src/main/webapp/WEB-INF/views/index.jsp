@@ -28,8 +28,6 @@
 		frm.action="test2.do";
 		frm.submit();
 	}
-
- }
  </script>
    <!-- CSS includes -->
    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -343,6 +341,9 @@
 				<div class="col-md-3 text-center">
 					<c:if test = "${!empty addMenuContent}">
 						<jsp:include page="${addMenuContent}"/>	
+					</c:if>
+					<c:if test = "${!empty updateMenuContent}">
+						<jsp:include page="${updateMenuContent}"/>	
 					</c:if>
 					<c:if test = "${empty addMenuContent}">
 						<article id="weeklyMenuContent">

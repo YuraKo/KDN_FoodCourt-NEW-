@@ -7,7 +7,7 @@
 	<insert id = "add" parameterType="diet">
 		insert into diet(DIETNO,scode,DIETDATE,MAINDISH,SIDEDISH)
 		values(
-			#{diet:INTEGER},
+			#{dietNo:INTEGER},
 			#{scode:VARCHAR},
 			#{dietDate:VARCHAR},
 			#{mainDish:VARCHAR},
@@ -27,7 +27,7 @@
 	
 	<select id = "getDietNo" resultType="int">
 		select diet_no.nextVal
-		from dual;
+		from dual
 	</select>
 	
 	<select id = "search5Diet" resultType="diet">
