@@ -1,7 +1,7 @@
 package com.kdn.model.domain;
 
 import java.io.Serializable;
-public class FoodPageBean implements Serializable {
+public class RankingPageBean implements Serializable {
 	/**
 	 * key : 검색 조건
 	 * word: 검색 단어
@@ -47,19 +47,19 @@ public class FoodPageBean implements Serializable {
 		if(k!=null && key.equals(k)) return "selected='selected'";
 		else return "";
 	}
-	public FoodPageBean(){
+	public RankingPageBean(){
 		setKey("all");
 		setWord("");
 		setPagelink("1");
 		setPageNo(1);
 	}
-	public FoodPageBean(String key, String word, String pagelink, int pageNo) {
+	public RankingPageBean(String key, String word, String pagelink, int pageNo) {
 		setKey(key);
 		setWord(word);
 		setPagelink(pagelink);
 		setPageNo(pageNo);
 	}
-	public FoodPageBean(String key, String word, String pagelink, String pageNo) {
+	public RankingPageBean(String key, String word, String pagelink, String pageNo) {
 		setKey(key);
 		setWord(word);
 		setPagelink(pagelink);
@@ -97,6 +97,7 @@ public class FoodPageBean implements Serializable {
 				.append(", end=").append(end).append("]");
 		return builder.toString();
 	}
+	
 }
 
 
