@@ -19,7 +19,6 @@
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript" src="https://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
- 
  <script type="text/javascript">
  function getBoard(rno){
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
@@ -27,9 +26,9 @@
 		var frm = document.getElementById("frm");
 		frm.action="test2.do";
 		frm.submit();
-	}
+}
 
- }
+
  </script>
    <!-- CSS includes -->
    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
