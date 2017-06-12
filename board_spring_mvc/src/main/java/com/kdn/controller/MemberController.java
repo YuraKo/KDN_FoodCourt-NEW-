@@ -83,7 +83,12 @@ public class MemberController {
 		session.setAttribute("mno", mno);
 		session.setAttribute("grade", memberService.search(mno).getGrade());
 		session.setAttribute("prefer", memberService.search(mno).getPrefer());
+		
+		List<Diet> preferList = dietService.searchPrefer(mno);
+		System.out.println("preferList : " + preferList);
+		session.setAttribute("preferList",preferList);
 		System.out.println("log : 로그인 완료");
+		
 		return "redirect:/";
 	}
 

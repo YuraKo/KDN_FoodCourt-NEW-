@@ -29,6 +29,7 @@
 }
  
  function openPop(){
+
 	window.open("open.jsp","openPop","width=400, height=400");
  }
  </script>

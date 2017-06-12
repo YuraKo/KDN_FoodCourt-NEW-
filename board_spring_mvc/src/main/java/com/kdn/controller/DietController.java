@@ -85,4 +85,6 @@ public class DietController {
 		model.addAttribute("updateMenuContent", "weekly_menu/updateMenu.jsp");
 		return "index";
 	}
+	
+	
 }

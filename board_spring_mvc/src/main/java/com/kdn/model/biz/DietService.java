@@ -11,4 +11,5 @@ public interface DietService {
 	public void remove(int dietNo);
 	public Diet search(int dietNo);
 	public List<Diet> searchAll();
+	public List<Diet> searchPrefer(int mno);
 }
