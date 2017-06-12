@@ -312,7 +312,7 @@
         <div class="carousel-control-arrow">&#8250;</div>
    </a>
 
-	<div class="container-news">
+	<div class="container-news" name="container-news" id="container-news">
 		<div class="container">
 			<div class="page-header" id="news">
 				<h1 class="text-center text-danger">Notice</h1>
