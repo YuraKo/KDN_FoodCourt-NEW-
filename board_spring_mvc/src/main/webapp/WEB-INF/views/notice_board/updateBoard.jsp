@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link  rel="stylesheet" type="text/css" href="css/basic.css"  />
+<script>location.hash="news";</script>
 <script type="text/javascript">
 	function init(){
 		var writeNoticeBoard = document.getElementById("writeNoticeBoard");
@@ -83,34 +84,5 @@
 			</div>
 		</div>
 	</form>
-        
-	<%-- <div class="main" id="writeNoticeBoard" style="display:none">
-	 	<form  id="updatenfrm" method="post">
-	 	    <input type ="hidden" name="nno"  id="nno"  value="${noticeBoard.nno}"/>
-	 	    <input type ="hidden" name="mno"  id="mno"  value="${noticeBoard.mno}"/>
-			<table border="1" align="center">
-				<caption>게시글 작성</caption>
-				<tbody>
-					<tr><td><label for="title">제목</label></td>
-					    <td><input type="text" name="title" id="title" value="${noticeBoard.title}"/></td>
-					</tr>
-					<tr><td colspan="2">내용</td></tr>
-					<tr><td colspan="2">
-						<textarea name="contents" id="contents" cols="30" rows="10">
-							${noticeBoard.contents}
-						</textarea>
-						</td></tr>
-				</tbody>
-				<tfoot>
-					<tr><td colspan="2" align="center">
-						<a href="#" onclick="updateNoticeBoard()"> 수정 </a> 
-						<a href="#" onclick="resetNoticeBoard()"> 다시 쓰기</a> 
-						<a href="#" onclick="listNoticeBoard()"> 목 록</a>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</form>
-	</div> --%>
 </body>
 </html>

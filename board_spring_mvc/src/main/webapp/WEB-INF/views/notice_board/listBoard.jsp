@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>location.hash="news";</script>
 <script type="text/javascript">
 	function noticePagelist(cpage) {
 		document.getElementById("noticePageNo").value = cpage;
@@ -51,11 +52,11 @@
 					<p class="update_delete_option">
 						<c:choose>
 							<c:when test="${!empty grade and grade=='Y'}">
-								<a href="#" class="btn btn-default"
+								<a href="#news" class="btn btn-default"
 									onclick="updateNoticeBoardForm(${noticeBoard.nno})"> <em
 									class="fa fa-pencil"></em>
 								</a>
-								<a href="#" class="btn btn-danger"
+								<a href="#news" class="btn btn-danger"
 									onclick="deleteNoticeBoard(${noticeBoard.nno})"> <em
 									class="fa fa-trash" data-target="#deleteReviewModal"></em>
 								</a>
