@@ -7,7 +7,7 @@
 	<insert id = "add" parameterType="diet">
 		insert into diet(DIETNO,scode,DIETDATE,MAINDISH,SIDEDISH)
 		values(
-			#{diet:INTEGER},
+			#{dietNo:INTEGER},
 			#{scode:VARCHAR},
 			#{dietDate:VARCHAR},
 			#{mainDish:VARCHAR},
@@ -27,7 +27,7 @@
 	
 	<select id = "getDietNo" resultType="int">
 		select diet_no.nextVal
-		from dual;
+		from dual
 	</select>
 	
 	<select id = "search5Diet" resultType="diet">
@@ -35,6 +35,18 @@
 	    FROM diet
 	    where (dietdate BETWEEN to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) and to_date(to_char(TRUNC(SYSDATE, 'IW'), 'yyyymmdd')) + 4.99999)
 		ORDER BY DIETDATE, SCODE
+	</select>
+	
+	<select id="searchPrefer" resultType="diet">
+	SELECT a.maindish maindish, b.mno mno
+	FROM(SELECT scode, maindish
+		 FROM DIET
+		 WHERE TO_CHAR(dietDate, 'yyyy-mm-dd') = TO_CHAR(SYSDATE, 'yyyy-mm-dd')
+		 ) a, (SELECT prefer , mno
+			  FROM member
+			  WHERE prefer IS not NULL ) b
+	WHERE b.prefer LIKE '%'||a.maindish||'%'
+	AND mno=#{mno:INTEGER}
 	</select>
 	
 	<select id = "search" parameterType="int" resultType="diet">

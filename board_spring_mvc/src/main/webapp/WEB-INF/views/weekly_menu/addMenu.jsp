@@ -14,9 +14,9 @@
 	var count = 1;
 	$(document).ready(function(){
 		$("#addButton").click(function(){
-			console.log("test");
-			var html = "<input type = 'text'  name = 'sideDish' id = sideDish" + count + "><span>&nbsp&nbsp</span><button onclick = deleteAttr('sideDish" + count + "')>삭제</button><br/>";
+			var html = "<div id = sideDish" + count + "><input type = 'text'  name = 'tempSide' ><span>&nbsp&nbsp</span><button onclick = deleteAttr('sideDish" + count + "')>삭제</button><br/></div>";
 			$("#foodDiv").append(html);
+			count++;
 		});
 	});
 	
@@ -25,34 +25,72 @@
 		var item = document.getElementById(attr);
 		item.remove();
 	}
+	
+	function mergeMenu(){
+		var items = document.getElementsByName('tempSide');
+		var dishes = " ";
+		for(var i=0, item; item=items[i]; i++) {
+			dishes += (item.value + '<br/>' );
+		}
+		
+		document.getElementById('sideDish').value = dishes;
+		console.log(dishes);
+		frm.submit();
+	}
+	
+	function addMenuBack(){
+		history.back();
+	}
 </script>
 </head>
 <body>
-	<div>
-		<table width = "500px" >
-			<tr>
-				<td>식단</td>
-				<td colspan = "2" class = "blackColor">
-					<select name="scode" id="scode">
-					    <option value="1">아침</option>
-					    <option value="2">일품</option>
-					    <option value="3">한식</option>
-					    <option value="4">저녁</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td >메인 메뉴</td>
-				<td colspan = "2" class = "blackColor"><input type = "text"  name = "mainDish" id = "mainDish"></td>
-			</tr>
-			<tr>
-				<td>반찬</td>
-				<td class = "blackColor" id = "foodDiv">
-					
-				</td>
-				<td><button id = "addButton">추가</button></td>
-			</tr>
-		</table>
+	
+	<div style = "width : 1000px; float : left;">
+	<h2 align = "center">insert weekly menu</h2>
+		<form id = "frm" action = "addWeeklyMenu.do" method = "POST">
+			<input type = "hidden" id = "sideDish" name = "sideDish"/>
+			<table width = "800px" >
+				<tr>
+					<td>달력</td>
+					<td colspan = "2" class = "blackColor">
+						<input type = "date" name = "dietDate" id = "dietDate">
+					</td>
+				</tr>
+				<tr>
+					<td >식단</td>
+					<td colspan = "2" class = "blackColor">
+						<select name="scode" id="scode">
+						    <option value="1">아침</option>
+						    <option value="2">일품</option>
+						    <option value="3">한식</option>
+						    <option value="4">저녁</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td >메인 메뉴</td>
+					<td colspan = "2" class = "blackColor"><input type = "text"  name = "mainDish" id = "mainDish"></td>
+				</tr>
+				</table>
+			</form>
+			<table  width = "800px" >
+				<tr>
+					<td>반찬</td>
+					<td colspan = "2" class = "blackColor" id = "foodDiv">
+						<input type = 'text'  name = 'tempSide' >
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<input type="button" onclick = "mergeMenu()" value="작성"/>
+						<input type="button" onclick = "addMenuBack()" value="취소"/>
+					</td>
+				</tr>
+			</table>
+		
+		<div style = "float : right;">
+			<button id = "addButton">추가</button>
+		</div>
 	</div>
 </body>
 </html>

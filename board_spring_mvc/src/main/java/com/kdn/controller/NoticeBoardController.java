@@ -6,8 +6,12 @@ import java.util.List;
 
 
 
+
+
 import javax.servlet.http.HttpServletRequest;
  
+
+
 
 
 
@@ -24,8 +28,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
+import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
@@ -50,9 +58,17 @@ public class NoticeBoardController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@Autowired
+	DietService dietService;
+	
 	@RequestMapping(value="insertNoticeBoardForm.do", method=RequestMethod.GET)
-	public String insertBoardForm(Model model) {
+	public String insertBoardForm(Model model, ReviewPageBean bean) {
 		model.addAttribute("noticeBoardContent", "notice_board/insertBoard.jsp");
+		
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
+		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		
 		return "index";
 	}
 	@RequestMapping(value="insertNoticeBoard.do", method=RequestMethod.POST)
@@ -70,9 +86,14 @@ public class NoticeBoardController {
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticePageBean", noticebean);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
+		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		
+		List<Diet> dietList = dietService.searchAll();
+		model.addAttribute("dietList", dietList);
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
 		return "index";
 	}
  

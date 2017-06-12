@@ -19,7 +19,7 @@
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript" src="https://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
- <script type="text/javascript">
+<script type="text/javascript">
  function getBoard(rno){
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
 		document.getElementById("rno").value = rno;
@@ -27,9 +27,12 @@
 		frm.action="test2.do";
 		frm.submit();
 }
-
-
+ 
+ function openPop(){
+	window.open("open.jsp","openPop","width=400, height=400");
+ }
  </script>
+ 
    <!-- CSS includes -->
    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,13 +40,7 @@
    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
    <link href="https://www.shieldui.com/shared/components/latest/css/light/all.min.css" rel="stylesheet" />
    <link href="css/theme.css" rel="stylesheet">
-
-   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-   <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-   <![endif]-->
+   
 </head>
 <style type="text/css">
 
@@ -129,10 +126,12 @@
 #loginFooter a {
     color: inherit;
 }
- 
 </style>
-<body>
- 
+
+<c:if test = "${!empty mno}">
+	<body onload="openPop();">
+</c:if>
+
 <!-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
    <div class="container">

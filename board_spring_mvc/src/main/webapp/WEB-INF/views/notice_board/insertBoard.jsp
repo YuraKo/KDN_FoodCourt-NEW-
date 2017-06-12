@@ -8,13 +8,17 @@
 <style type="text/css">
 
 
-
 </style>
 <script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+<script>location.hash="news";</script>
 <script type="text/javascript">
 $(function(){
 	$("#addFile").click(addFileForm);
 });
+function noticeBoardMV(){
+	console.log("noticeBoardMV");
+	document.getElementById('noticeBoardPoint').scrollIntoView(true);
+}
 var count=0;   //file form index
 function addFileForm(){
 	var html="<div id='item_"+count+"'>"
@@ -47,13 +51,9 @@ function removeForm(count){
                                 <input type="hidden" class="form-control" name="mno" id="mno" value="${mno}" placeholder="Register Number" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="title" id="title"placeholder="Title" />
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" />
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
-                           원래 여기 작성자 이름이랑 날짜 입력 부분 있었음
-                           위에 있던 제목 입력 부분 여기로 내림
-                        </div> -->
                         <div class="col-md-12 text-center">
                             <div class="form-group">
                                 <textarea class="form-control" name="contents" id="contents" placeholder="Enter announcement to be notified" rows="6"></textarea>

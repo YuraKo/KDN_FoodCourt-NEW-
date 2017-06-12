@@ -82,6 +82,7 @@ public class MemberController {
 		memberService.login(mno, pw);
 		session.setAttribute("mno", mno);
 		session.setAttribute("grade", memberService.search(mno).getGrade());
+		session.setAttribute("prefer", memberService.search(mno).getPrefer());
 		System.out.println("log : 로그인 완료");
 		return "redirect:/";
 	}

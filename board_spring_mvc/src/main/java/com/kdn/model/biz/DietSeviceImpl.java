@@ -53,11 +53,11 @@ public class DietSeviceImpl implements DietService {
 	}
 
 	@Override
-	public void add(Diet food) {
+	public void add(Diet diet) {
 		try{
 			int dietNo = dao.getDietNo();
-			food.setDietNo(dietNo);
-			dao.add(food);
+			diet.setDietNo(dietNo);
+			dao.add(diet);
 		}
 		catch(Exception e){
 			e.printStackTrace();
