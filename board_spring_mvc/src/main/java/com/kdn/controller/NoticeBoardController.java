@@ -6,12 +6,8 @@ import java.util.List;
 
 
 
-
-
 import javax.servlet.http.HttpServletRequest;
  
-
-
 
 
 
@@ -28,12 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-
-
-import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.ReviewService;
-import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
@@ -42,14 +34,6 @@ import com.kdn.model.domain.ReviewPageBean;
  
 @Controller
 public class NoticeBoardController {
-	@Autowired
-	NoticeBoardService	noticeBoardService;
-	
-	@Autowired
-	ReviewService reviewService;
-	
-	@Autowired
-	DietService dietService;
 	
 	@ExceptionHandler
 	public ModelAndView handler(Exception e) {
@@ -59,6 +43,12 @@ public class NoticeBoardController {
 		return model;
 		
 	}
+	
+	@Autowired
+	private NoticeBoardService noticeBoardService;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	@RequestMapping(value="insertNoticeBoardForm.do", method=RequestMethod.GET)
 	public String insertBoardForm(Model model) {
@@ -80,26 +70,36 @@ public class NoticeBoardController {
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("noticePageBean", noticebean);
 		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");
-		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
-		
-		List<Diet> dietList = dietService.searchAll();
-		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
-		
 		return "index";
 	}
  
 	@RequestMapping(value="searchNoticeBoard.do", method=RequestMethod.GET)
 	public String searchBoard(int nno, Model model) {
 		model.addAttribute("noticeBoard", noticeBoardService.search(nno));
-		System.out.println(nno);
 		model.addAttribute("noticeBoardContent", "notice_board/searchBoard.jsp");
 		return "index";
-		
 	}
 	
+	@RequestMapping(value="updateNoticeBoardForm.do", method=RequestMethod.GET)
+	public String updateBoardForm(int nno, Model model){
+		model.addAttribute("noticeBoard", noticeBoardService.search(nno));
+		model.addAttribute("noticeBoardContent", "notice_board/updateBoard.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value="updateNoticeBoard.do", method=RequestMethod.POST)
+	public String updateBoard(NoticeBoard noticeBoard){
+		noticeBoardService.update(noticeBoard);
+		return "redirect:listNoticeBoard.do";
+	}
+	
+	@RequestMapping(value="deleteNoticeBoard.do", method=RequestMethod.GET)
+	public String deletBoard(int nno){
+		noticeBoardService.remove(nno);
+		return "redirect:listNoticeBoard.do";
+	}
  
 }

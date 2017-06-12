@@ -81,17 +81,17 @@
 		)
 	</insert>
 	<update id="update" parameterType="noticeBoard">
-		update board set
-		id=#{id:VARCHAR}
+		update noticeboard set
+		nno=#{nno:VARCHAR}
 		, title=#{title:VARCHAR}
 		, contents=#{contents:VARCHAR}
-		,regdate=sysdate
-		where no=#{no:INTEGER}
+		, ndate=sysdate
+		where nno=#{nno:INTEGER}
 	</update>
 
 	<delete id="delete" parameterType="int">
-		delete from board where
-		no=#{no}
+		delete from noticeboard where
+		nno=#{nno}
 	</delete>
 </mapper>
 
