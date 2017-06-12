@@ -15,6 +15,12 @@ CREATE TABLE REVIEWBOARD(RNO number,
                          FNO number,
                          FNAME VARCHAR2(255),
                          REGDATE date);
+                      
+create table rankingboard(rkno number,
+						  rkname number,
+						  imag  varchar2(255)
+						 );
+
                          
                          
                          
@@ -244,3 +250,4 @@ CREATE SEQUENCE review_no;
 CREATE SEQUENCE reviewboard_no;
 CREATE SEQUENCE schedule_no;
 CREATE SEQUENCE upload_no;
+CREATE SEQUENCE rankingboard_no;
