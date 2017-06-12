@@ -5,6 +5,25 @@ CREATE TABLE member(mno NUMBER PRIMARY KEY,
                     phone VARCHAR2(255) NOT NULL,
                     email VARCHAR2(255) NOT NULL);
 
+                    
+create table suyo (
+					
+					dietno NUMBER references diet(dietno),
+					mno NUMBER REFERENCES member(mno)
+)                    
+
+select * from suyo;
+
+select di.dietno "dietNo", count(*) "suyoCountAll"
+from SUYO su, diet di
+where di.dietno = su.dietno(+)
+group by di.dietno
+order by di.dietno;
+
+select * from diet;
+
+insert into SUYO(dietno, mno) values(27, 2222);
+                    
 insert into member(mno, grade, password, mname, phone, email)
 values(1111, 'n', '1234', 'kdn', '010-1234-5432', 'kdn@kdn.com');
 

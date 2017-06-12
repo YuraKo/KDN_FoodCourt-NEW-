@@ -7,7 +7,7 @@
 	<insert id = "add" parameterType="diet">
 		insert into diet(DIETNO,scode,DIETDATE,MAINDISH,SIDEDISH)
 		values(
-			#{diet:INTEGER},
+			#{dietNo:INTEGER},
 			#{scode:VARCHAR},
 			#{dietDate:VARCHAR},
 			#{mainDish:VARCHAR},

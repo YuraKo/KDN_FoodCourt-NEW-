@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.biz.SuyoService;
 import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
@@ -40,6 +41,9 @@ public class HomeController {
 	@Autowired
 	DietService dietService;
 	
+	@Autowired
+	SuyoService suyoService;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -58,6 +62,9 @@ public class HomeController {
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
 		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		
+		List<Integer> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		return "index";
 	}
 	
