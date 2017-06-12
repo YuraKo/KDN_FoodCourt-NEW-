@@ -31,6 +31,8 @@
 	<div style ="float:left;">
 		<c:if test = "${!empty mno }">
 			<a href = "addWeeklyMenuForm.do" >Add Menu</a>
+			<span>&nbsp&nbsp</span>
+			<a href = "updateWeeklyMenuForm.do" >update Menu</a>
     	</c:if>
     </div> 
 	<div>

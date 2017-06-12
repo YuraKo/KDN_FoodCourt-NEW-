@@ -9,7 +9,7 @@
 		values(
 			#{dietNo:INTEGER},
 			#{scode:VARCHAR},
-			#{dietDate:VARCHAR},
+			#{dietDate:DATE},
 			#{mainDish:VARCHAR},
 			#{sideDish:VARCHAR}
 		)
@@ -18,7 +18,7 @@
 	<update id = "update" parameterType="diet">
 		update diet set
 			scode = #{scode:INTEGER},
-			DIETDATE = #{dietDate:VARCHAR},
+			DIETDATE = #{dietDate:DATE},
 			MAINDISH = #{mainDish:VARCHAR},
 			SIDEDISH = #{sideDish:VARCHAR}
 		where
@@ -37,15 +37,15 @@
 		ORDER BY DIETDATE, SCODE
 	</select>
 	
-	<select id = "search" parameterType="int" resultType="diet">
-		select *
-		from diet where dietNo = #{dietNo}
+	<select id = "search" parameterType="HashMap" resultType="diet">
+		select dietNo, scode, to_char(DIETDATE, 'yyyy-mm-dd') dietDate, mainDish, sideDish
+		from diet 
+		where scode = #{scode:VARCHAR} and dietDate = #{dietDate:DATE}
 	</select>
 	
 	<delete id = "delete" parameterType="int">
 		delete from diet
 		where DIETNO= #{dietNo:INTEGER}
 	</delete>
-	
 	
 </mapper>	

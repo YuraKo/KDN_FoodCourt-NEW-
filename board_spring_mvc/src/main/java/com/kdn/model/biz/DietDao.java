@@ -11,7 +11,7 @@ public interface DietDao {
 	public void 	update(Diet diet) ;
 	public void 	remove(int dietNo) ;
 	public List<Diet> 	search5Diet() ;
-	public Diet 	search(int dietNo) ;
+	public Diet 	search(String dietDate, int scode) ;
 	public int 		getDietNo() ;
 	/*public void 	addFiles(List<FileBean> files, int dietNo) ;
 	public void 	removeFiles(int bno) ;*/

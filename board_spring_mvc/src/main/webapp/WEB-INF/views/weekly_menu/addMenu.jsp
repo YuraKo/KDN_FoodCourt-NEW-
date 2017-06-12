@@ -14,7 +14,7 @@
 	var count = 1;
 	$(document).ready(function(){
 		$("#addButton").click(function(){
-			var html = "<div id = sideDish" + count + "><input type = 'text'  name = 'tempSide' ><span>&nbsp&nbsp</span><button onclick = deleteAttr('sideDish" + count + "')>삭제</button><br/></div>";
+			var html = "<div id = sideDish" + count + "><input type = 'text'  name = 'tempSide' ><input type = 'button' onclick = deleteAttr('sideDish" + count + "') value = '삭제'><br/></div>";
 			$("#foodDiv").append(html);
 			count++;
 		});
@@ -35,7 +35,7 @@
 		
 		document.getElementById('sideDish').value = dishes;
 		console.log(dishes);
-		frm.submit();
+		$("#frm").submit();
 	}
 	
 	function addMenuBack(){
@@ -71,13 +71,10 @@
 					<td >메인 메뉴</td>
 					<td colspan = "2" class = "blackColor"><input type = "text"  name = "mainDish" id = "mainDish"></td>
 				</tr>
-				</table>
-			</form>
-			<table  width = "800px" >
 				<tr>
 					<td>반찬</td>
 					<td colspan = "2" class = "blackColor" id = "foodDiv">
-						<input type = 'text'  name = 'tempSide' >
+						<input type = 'text'  name = 'tempSide'><input type = "button" id = "addButton" value = "추가">
 					</td>
 				</tr>
 				<tr>
@@ -86,11 +83,8 @@
 						<input type="button" onclick = "addMenuBack()" value="취소"/>
 					</td>
 				</tr>
-			</table>
-		
-		<div style = "float : right;">
-			<button id = "addButton">추가</button>
-		</div>
+				</table>
+			</form>
 	</div>
 </body>
 </html>
