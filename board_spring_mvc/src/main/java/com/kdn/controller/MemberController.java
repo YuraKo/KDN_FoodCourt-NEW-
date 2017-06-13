@@ -83,7 +83,11 @@ public class MemberController {
 		session.setAttribute("mno", mno);
 		session.setAttribute("grade", memberService.search(mno).getGrade());
 		session.setAttribute("prefer", memberService.search(mno).getPrefer());
-		System.out.println("log : 로그인 완료");
+		if(memberService.search(mno).getGrade().equals('Y'))
+			System.out.println("log : 관리자 로그인 완료");
+		else
+			System.out.println("log : 사용자 로그인 완료");
+		
 		return "redirect:/";
 	}
 

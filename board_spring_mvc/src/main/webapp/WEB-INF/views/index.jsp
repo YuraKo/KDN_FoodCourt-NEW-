@@ -347,6 +347,9 @@
 							<jsp:include page="${weeklyMenuContent}"/>
 						</article>
 					</c:if>
+					<c:if test = "${!empty updateMenuContent}">
+						<jsp:include page="${updateMenuContent}"/>
+					</c:if>
 				</div>
 			</div>
 		</div>
