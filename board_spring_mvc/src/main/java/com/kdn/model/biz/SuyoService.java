@@ -9,5 +9,5 @@ public interface SuyoService {
 	public void minus(Suyo suyo);
 	public Suyo searchSuyo(Suyo suyo);
 	public int getSuyoCount(Suyo suyo);
-	public List<Integer> getSuyoCountAll();
+	public List<Suyo> getSuyoCountAll();
 }

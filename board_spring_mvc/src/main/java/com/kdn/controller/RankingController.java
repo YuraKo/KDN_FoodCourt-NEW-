@@ -50,16 +50,12 @@ public class RankingController {
 	@RequestMapping(value="listRanking.do", method=RequestMethod.GET)
 	public String listReview(Model model) {
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");

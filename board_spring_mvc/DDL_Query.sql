@@ -13,8 +13,34 @@ create table suyo (
 					mno NUMBER REFERENCES member(mno)
 )                    
 
-select * from suyo;
+select * from suyo
+order by dietno;
+
+select * from suyo
+order by mno, dietno;
+
+insert into suyo(dietno, mno) values(22, 1111);
+insert into suyo(dietno, mno) values(23, 1111);
+insert into suyo(dietno, mno) values(24, 1111);
+insert into suyo(dietno, mno) values(25, 1111);
+insert into suyo(dietno, mno) values(26, 1111);
+insert into suyo(dietno, mno) values(27, 1111);
+insert into suyo(dietno, mno) values(28, 1111);
+insert into suyo(dietno, mno) values(29, 1111);
+insert into suyo(dietno, mno) values(30, 1111);
+insert into suyo(dietno, mno) values(31, 1111);
+insert into suyo(dietno, mno) values(32, 1111);
+insert into suyo(dietno, mno) values(33, 1111);
+insert into suyo(dietno, mno) values(34, 1111);
+insert into suyo(dietno, mno) values(35, 1111);
+insert into suyo(dietno, mno) values(36, 1111);
+insert into suyo(dietno, mno) values(37, 1111);
+insert into suyo(dietno, mno) values(38, 1111);
+insert into suyo(dietno, mno) values(39, 1111);
+insert into suyo(dietno, mno) values(40, 1111);
+
 alter table member add prefer varchar2(2000)
+
 select di.dietno "dietNo", count(*) "suyoCountAll"
 from SUYO su, diet di
 where di.dietno = su.dietno(+)
