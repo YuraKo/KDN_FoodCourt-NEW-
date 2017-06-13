@@ -43,7 +43,7 @@
    
 </head>
 <style type="text/css">
-
+ 
 #login {
     padding-top: 50px
 }
@@ -127,11 +127,11 @@
     color: inherit;
 }
 </style>
-
+ 
 <c:if test = "${!empty mno}">
 	<body onload="openPop();">
 </c:if>
-
+ 
 <!-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
    <div class="container">
@@ -153,7 +153,7 @@
             <li><a href="#news" class="smooth-scroll">Notice</a></li>
             <li><a href="#services" class="smooth-scroll">Menu</a></li>
             <li><a href="#about" class="smooth-scroll">Review</a></li>
-            <li><a href="#dishes" class="smooth-scroll">TOP4</a></li>
+            <li><a href="#gallery" class="smooth-scroll">TOP</a></li>
      
             <c:if test = "${empty mno}">
             	<li><a href="registerForm.do" class="smooth-scroll"> Register </a></li>
@@ -195,48 +195,71 @@
       </div> <!-- /.modal-content -->
    </div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
-
-<!-- insert review 모달 팝업 --> 
-<div class="modal fade forget-modal" id = "reviewModal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
-   <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-         <div class="modal-header">
-                <h4>Insert Review</h4><br/>
-                	<c:if test = "${!empty mno}">
-	                    <form method="post" action="insertReview.do" enctype="multipart/form-data" >
+ 
+	<!-- insert review 모달 팝업 -->
+	<div class="modal fade forget-modal" id="reviewModal" tabindex="-1"
+		role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4>Insert Review</h4>
+					<br />
+					<c:if test="${!empty mno}">
+						<form method="post" action="insertReview.do"
+							enctype="multipart/form-data">
 							<table align="center" width="300">
-								<tr><th colspan="2"> 게시글 작성 </th></tr>
-								<tr height="50"><td><label for="title" >아이디</label></td>
-					    		<td><input type="text" name="mno" id="mno" value="${mno }"/></td>
+								<tr>
+									<th colspan="2">게시글 작성</th>
 								</tr>
-								<tr height="50"><td><label for="title" >별점</label></td>
-					    		<td><input type="text" name="spoint" id="spoint" /></td>
+								<tr height="50">
+									<td><label for="title">아이디</label></td>
+									<td><input type="text" name="mno" id="mno" value="${mno }" /></td>
 								</tr>
-								<tr height="50"><td><label for="title" >음식이름</label></td>
-					    		<td><input type="text" name="fname" id="fname" /></td>
+								<tr height="50">
+									<td><label for="title">별점</label></td>
+									<td><input type="text" name="spoint" id="spoint" /></td>
 								</tr>
-								<tr><td colspan="2"><label for="contents" >코멘트</label></td></tr>
-								<tr><td colspan="2" align="center">
-					    		<textarea name="comments" id="comments" cols="30" rows="5"></textarea>
-								</td></tr>
-								<tr><td colspan="2" align="center">
-								<input type="submit" value="작성"/>
-								<input type="reset" value="취소"/>
-								</td></tr>
+									<tr height="50">
+										<td><label for="title">코너</label></td>
+										<td>
+											<select id = "scode" name = "scode">
+												<option value = "1">아침</option>
+												<option value = "2">일품</option>
+												<option value = "3">한식</option>
+												<option value = "4">저녁</option>
+											</select>
+										</td>
+									</tr>
+								<tr height="50">
+									<td><label for="title">음식이름</label></td>
+									<td><input type="text" name="fname" id="fname" /></td>
+								</tr>
+								<tr>
+									<td colspan="2"><label for="contents">코멘트</label></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><textarea name="comments"
+											id="comments" cols="30" rows="5"></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+									<input type="submit" value="작성" /> <input type="reset" value="취소" /></td>
+								</tr>
 							</table>
 						</form>
-						</c:if>
-						<c:if test = "${empty mno }">
-							<span>
-								로그인 후에 리뷰를 작성할 수 있습니다.
-							</span>
-						</c:if>
-                    <hr>
-         </div>
-      </div> <!-- /.modal-content -->
-   </div> <!-- /.modal-dialog -->
-</div> <!-- /.modal -->
-
+					</c:if>
+					<c:if test="${empty mno }">
+						<span> 로그인 후에 리뷰를 작성할 수 있습니다. </span>
+					</c:if>
+					<hr>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+ 
  
 <div class="modal fade forget-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-sm">
@@ -309,7 +332,7 @@
    <a class="right carousel-control" href="#theme-carousel" role="button" data-slide="next">
         <div class="carousel-control-arrow">&#8250;</div>
    </a>
-
+ 
 	<div class="container-news">
 		<div class="container">
 			<div class="page-header" id="news">
@@ -330,7 +353,7 @@
 			</div>
 		</div>
 	</div>
-
+ 
 	<div class="container-services">
 		<div class="container">
 			<div class="page-header" id="services">
@@ -347,14 +370,11 @@
 							<jsp:include page="${weeklyMenuContent}"/>
 						</article>
 					</c:if>
-					<c:if test = "${!empty updateMenuContent}">
-						<jsp:include page="${updateMenuContent}"/>
-					</c:if>
 				</div>
 			</div>
 		</div>
 	</div>
-
+ 
 	<div class="container-about">
 		<div class="container">
 			<div class="page-header" id="about">
@@ -369,54 +389,29 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="container-dishes">
-   <div class="clearfix hidden-xs" style="width:100%; height:10px;"></div>
-   <div class="container">
-      <div class="page-header" id="dishes">
-         <h1 class="text-center text-default">TOP4</h1>
-      </div>
-      <div class="row">
-         <div class="col-md-6">
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  <img src="images/dishes1.jpg" class="img-responsive" />
-                  <h4 class="text-danger">Dishes name</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-6">
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  <img src="images/dishes2.jpg" class="img-responsive" />
-                  <h4 class="text-danger">Dishes name</h4>
-                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-6">
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  <img src="images/dishes3.jpg" class="img-responsive" />
-                  <h4 class="text-danger">Dishes name</h4>
-                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur ex ea commodo.</p>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-6">
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  <img src="images/dishes4.jpg" class="img-responsive" />
-                  <h4 class="text-danger">Dishes name</h4>
-                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur ex ea commodo.</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="clearfix hidden-xs" style="width:100%; height:50px;"></div>
-</div>
+ 
+	<div class="container-gallery">
+		<div class="container">
+			<div class="page-header" id="gallery">
+				<h1 class="text-center text-default">Ranking</h1>
+			</div>
+			<div id="rankingBoardContent" class="row">
+			<div class="col-md-12 text-center">
+				<ul class="list-unstyled text-center">
+					<li class="filter btn btn-success" data-filter=".dishes">아침</li>
+					<li class="filter btn btn-success" data-filter=".restaurant">한식</li>
+					<li class="filter btn btn-success" data-filter=".garden">일품</li>
+					<li class="filter btn btn-success" data-filter=".kids">저녁</li>
+					<li class="filter btn btn-success" data-filter="all">전체</li>
+				</ul>
+			</div>
+				<article id="rankingBoardContent">
+					<jsp:include page="${rankingBoardContent}" />
+				</article>
+			</div>
+		</div>
+		<div class="clearfix hidden-xs" style="width: 100%; height: 50px;"></div>
+	</div>
  
 <div class="container-ourteam">
     <div class="container">
@@ -449,7 +444,7 @@
             </div>
         </div>
     </div>
-
+ 
 <!--<div class="container-gallery">
     <div class="container">
         <div class="page-header" id="gallery">
@@ -588,7 +583,7 @@
         </div>
     </div>
 </footer>
-
+ 
 <script type="text/javascript">
     jQuery(function($) {
         // Mix It Up Gallery and Magnific Popup setup

@@ -43,8 +43,8 @@ public class DietDaoImpl implements DietDao {
 
 	
 	@Override
-	public List<Diet> searchPrefer() {
-		return session.selectList("diet.searchPrefer");
+	public List<Diet> searchPrefer(int mno) {
+		return session.selectList("diet.searchPrefer", mno);
 	}
 
 	@Override

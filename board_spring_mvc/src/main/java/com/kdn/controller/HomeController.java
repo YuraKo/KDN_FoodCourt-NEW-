@@ -17,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
+import com.kdn.model.biz.RankingService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.biz.SuyoService;
 import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.PageBean;
+import com.kdn.model.domain.Ranking;
+import com.kdn.model.domain.RankingPageBean;
 import com.kdn.model.domain.Review;
 import com.kdn.model.domain.ReviewPageBean;
 
@@ -32,13 +36,19 @@ import com.kdn.model.domain.ReviewPageBean;
 public class HomeController {
 	
 	@Autowired
-	NoticeBoardService	noticeBoardService;
+	private NoticeBoardService	noticeBoardService;
 	
 	@Autowired
-	ReviewService reviewService;
+	private ReviewService reviewService;
 	
 	@Autowired
-	DietService dietService;
+	private DietService dietService;
+	
+	@Autowired
+	private RankingService rankingService;
+	
+	@Autowired
+	SuyoService suyoService;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -56,8 +66,27 @@ public class HomeController {
 		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
+		System.out.println(dietList);
 		model.addAttribute("dietList", dietList);
 		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		
+		List<Ranking> rankingList = rankingService.searchN();
+		System.out.println("저녁"+rankingList);
+		model.addAttribute("rankingList", rankingList);
+		List<Ranking> rankingM = rankingService.searchM();
+		System.out.println("아침"+rankingM);
+		model.addAttribute("rankingM", rankingM);
+		List<Ranking> rankingH = rankingService.searchH();
+		System.out.println("한식"+rankingH);
+		model.addAttribute("rankingH", rankingH);
+		List<Ranking> rankingI = rankingService.searchI();
+		System.out.println("일품"+rankingI);
+		model.addAttribute("rankingI", rankingI);
+		
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		
+		List<Integer> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		return "index";
 	}
 	

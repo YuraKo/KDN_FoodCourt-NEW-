@@ -122,4 +122,6 @@ public class DietController {
 		
 		return "index";
 	}
+	
+	
 }

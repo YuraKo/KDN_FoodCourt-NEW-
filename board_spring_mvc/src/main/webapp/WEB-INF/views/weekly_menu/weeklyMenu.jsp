@@ -3,11 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="pageBean" class="com.kdn.model.domain.PageBean"
 	scope="request" />
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
+<link href="./css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="./js/bootstrap-toggle.min.js"></script>
+<!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
 <link href="css/kdn-table.css" rel="stylesheet">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/basic.css" />
@@ -29,7 +33,7 @@
 </head>
 <body>
 	<div style ="float:left;">
-		<c:if test = "${!empty mno && grade == 'Y'}">
+		<c:if test = "${!empty garde && grade=='Y' }">
 			<a href = "addWeeklyMenuForm.do" >Add Menu</a>
 			<span>&nbsp&nbsp</span>
 			<a href = "updateWeeklyMenuForm.do" >update Menu</a>
@@ -51,11 +55,33 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>아침</td><td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[0].mainDish}')">${dietList[0].mainDish }</a><br/>${dietList[0].sideDish }</td>
-							    <td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[4].mainDish}')">${dietList[4].mainDish }</a><br/>${dietList[4].sideDish }</td>
-							    <td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[8].mainDish}')">${dietList[8].mainDish }</a><br/>${dietList[8].sideDish }</td>
-							    <td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[12].mainDish}')">${dietList[12].mainDish }</a><br/>${dietList[12].sideDish }</td>
-							    <td colspan = 2><a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[16].mainDish}')">${dietList[16].mainDish }</a><br/>${dietList[16].sideDish }</td>
+					<td>아침</td><td colspan = 2>
+									<a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[0].mainDish}')">${dietList[0].mainDish }</a>
+									<br/>${dietList[0].sideDish }<br/>
+									<c:if test="${ !empty mno }">
+									<a href="addSuyo.do?dietNo=${dietList[0].dietNo}&mno=${mno}"> 먹고싶어요 </a>
+									<a href="minusSuyo.do?dietNo=${dietList[0].dietNo}&mno=${mno}"> 다음에.. </a>
+									</c:if>
+									<br/>식사인원 : ${suyoCountList[ dietList[0].dietNo-1 ].suyoCountAll }
+									<!-- 토글이에요~ -->
+									<!-- <input type="checkbox" checked data-toggle="toggle" data-size="mini" data-on="먹을래요!" data-off="다음에..."> -->
+								</td>
+							    <td colspan = 2>
+							    	<a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[4].mainDish}')">${dietList[4].mainDish }</a>
+							    	<br/>${dietList[4].sideDish }
+							    </td>
+							    <td colspan = 2>
+							    	<a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[8].mainDish}')">${dietList[8].mainDish }</a>
+							    	<br/>${dietList[8].sideDish }
+							    </td>
+							    <td colspan = 2>
+							    	<a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[12].mainDish}')">${dietList[12].mainDish }</a>
+							    	<br/>${dietList[12].sideDish }
+							    </td>
+							    <td colspan = 2>
+							    	<a href = "#" data-toggle="modal" data-target="#reviewModal" onclick = "writeReviewInMenu('${dietList[16].mainDish}')">${dietList[16].mainDish }</a>
+							    	<br/>${dietList[16].sideDish }
+							    </td>
 				</tr>
 				<tr>
 					<td rowspan = 2>점심</td><td>일품</td><td>한식</td>

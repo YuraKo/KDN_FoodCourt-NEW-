@@ -12,6 +12,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,29 +48,22 @@ public class RankingController {
 	@Autowired
 	private DietService dietService;
 	@RequestMapping(value="listRanking.do", method=RequestMethod.GET)
-	public String listReview(ReviewPageBean bean, Model model, NoticePageBean noticebean, RankingPageBean rankingbean) {
-		/*List<Review> list = reviewService.searchAll(bean);
-		model.addAttribute("list", list);
-		model.addAttribute("reviewPageBean", bean);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");*/
-		
-	/*	System.out.println("NoticeBoardController.listBoard>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		System.out.println("NoticePageBean>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+noticebean);
-		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
-		model.addAttribute("noticeList", noticeList);
-		model.addAttribute("noticePageBean", noticebean);
-		model.addAttribute("noticeBoardContent", "notice_board/listBoard.jsp");*/
-		
-	/*	List<Diet> dietList = dietService.searchAll();
-		System.out.println("dietList : " + dietList);
-		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
-		*/
-		List<Ranking> rankingList = rankingService.searchAll(rankingbean);
+	public String listReview(Model model) {
+		List<Ranking> rankingList = rankingService.searchN();
+		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
+		List<Ranking> rankingM = rankingService.searchM();
+		System.out.println("아침"+rankingM);
+		model.addAttribute("rankingM", rankingM);
+		List<Ranking> rankingH = rankingService.searchH();
+		System.out.println("한식"+rankingH);
+		model.addAttribute("rankingH", rankingH);
+		List<Ranking> rankingI = rankingService.searchI();
+		System.out.println("일품"+rankingI);
+		model.addAttribute("rankingI", rankingI);
+		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
 		return "index";
-
 	}
 
 

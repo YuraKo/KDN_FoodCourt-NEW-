@@ -75,5 +75,15 @@ public class DietSeviceImpl implements DietService {
 		}
 	}
 
+	@Override
+	public List<Diet> searchPrefer(int mno) {
+		try{
+			return dao.searchPrefer(mno);	
+		}catch(Exception e){
+			 e.printStackTrace();
+	         throw new UpdateException("DB SearchPrefer error");
+		}
+	}
 
+	
 }

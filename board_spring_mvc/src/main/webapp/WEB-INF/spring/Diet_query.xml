@@ -37,7 +37,7 @@
 		ORDER BY DIETDATE, SCODE
 	</select>
 	
-	<select id="searchPrefer" resultType="diet">
+	<select id="searchPrefer" parameterType="int" resultType="diet">
 	SELECT a.maindish maindish, b.mno mno
 	FROM(SELECT scode, maindish
 		 FROM DIET
@@ -61,3 +61,4 @@
 	</delete>
 	
 </mapper>	
+
