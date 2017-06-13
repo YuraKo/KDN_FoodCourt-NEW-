@@ -33,8 +33,6 @@ public class SuyoController {
 	public String addSuyo(int dietNo, int mno, Model model) {
 		Suyo suyo = new Suyo(dietNo, mno);
 		suyoService.add(suyo);
-		System.out.println("suyo count ++");
-//		getSuyoCount(dietNo, mno, model);
 		return "redirect:listWeeklyMenu.do";
 	}
 	
@@ -42,8 +40,6 @@ public class SuyoController {
 	public String minusSuyo(int dietNo, int mno, Model model){
 		Suyo suyo = new Suyo(dietNo, mno);
 		suyoService.minus(suyo);
-		System.out.println("suyo count --");
-//		getSuyoCount(dietNo, mno, model);
 		return "redirect:listWeeklyMenu.do";
 	}
  
@@ -56,9 +52,7 @@ public class SuyoController {
 	@RequestMapping(value="getSuyoCount.do", method=RequestMethod.GET)
 	public String getSuyoCount(int dietNo, int mno, Model model, HttpSession session){
 		Suyo suyo = new Suyo(dietNo, mno);
-		System.out.println("suyo>>>>>>>>>>>>>>>>>>@controller"+suyo);
 		int suyoCount = suyoService.getSuyoCount(suyo);
-		System.out.println("suyoCount>>>>>>>>>>>>>@controller : "+suyoCount);
 		model.addAttribute("suyoCounte", suyoCount);
 		session.setAttribute("suyo", suyoCount);
 		return "index";

@@ -8,6 +8,6 @@ public interface SuyoDao {
 	public void add(Suyo suyo);
 	public void minus(Suyo suyo);
 	public int getSuyoCount(Suyo suyo);
-	public List<Integer> getSuyoCountAll();
+	public List<Suyo> getSuyoCountAll();
 	public Suyo searchSuyo(Suyo suyo);
 }

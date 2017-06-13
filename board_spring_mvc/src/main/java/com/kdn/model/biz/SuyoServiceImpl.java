@@ -34,6 +34,7 @@ public class SuyoServiceImpl implements SuyoService {
 
 	@Override
 	public void minus(Suyo suyo) {
+		System.out.println("suyominus>>>>>>>>>>>>>@service"+suyo);
 		Suyo findsuyo = dao.searchSuyo(suyo);
 		try {
 			if(findsuyo != null){
@@ -76,7 +77,7 @@ public class SuyoServiceImpl implements SuyoService {
 	}
 	
 	@Override
-	public List<Integer> getSuyoCountAll() {
+	public List<Suyo> getSuyoCountAll() {
 		try {
 			return dao.getSuyoCountAll();
 		} catch (Exception e) {

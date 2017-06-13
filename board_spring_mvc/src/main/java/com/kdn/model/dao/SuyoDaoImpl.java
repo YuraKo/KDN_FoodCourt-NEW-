@@ -23,6 +23,7 @@ public class SuyoDaoImpl implements SuyoDao {
 
 	@Override
 	public void minus(Suyo suyo) {
+		System.out.println("suyoMinus>>>>>>>>>>>>>>>>>>@dao"+suyo);
 		sql.delete("suyo.delete", suyo);
 	}
 
@@ -32,7 +33,7 @@ public class SuyoDaoImpl implements SuyoDao {
 	}
 	
 	@Override
-	public List<Integer> getSuyoCountAll() {
+	public List<Suyo> getSuyoCountAll() {
 		return sql.selectList("suyo.getSuyoCountAll");
 	}
 	
