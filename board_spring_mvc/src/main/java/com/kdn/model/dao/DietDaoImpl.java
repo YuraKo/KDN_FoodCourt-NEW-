@@ -1,5 +1,6 @@
 package com.kdn.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -40,6 +41,12 @@ public class DietDaoImpl implements DietDao {
 		return session.selectList("diet.search5Diet");
 	}
 
+	
+	@Override
+	public List<Diet> searchPrefer() {
+		return session.selectList("diet.searchPrefer");
+	}
+
 	@Override
 	public int getDietNo() {
 		// TODO Auto-generated method stub
@@ -47,9 +54,12 @@ public class DietDaoImpl implements DietDao {
 	}
 
 	@Override
-	public Diet search(int dietNo) {
+	public Diet search(String dietDate, int scode) {
 		// TODO Auto-generated method stub
-		return session.selectOne("diet.search", dietNo);
+		HashMap<String, String> test = new HashMap<String, String>();
+		test.put("dietDate", dietDate);
+		test.put("scode", String.format("%d", scode));
+		return session.selectOne("diet.search", test);
 	}
 
 }

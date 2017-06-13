@@ -23,6 +23,8 @@
 		<typeAlias type="com.kdn.model.domain.Diet" alias="diet"/>
 		<typeAlias type="com.kdn.model.domain.Suyo" alias="suyo"/>
 		<typeAlias alias="review" type="com.kdn.model.domain.Review"/>
+		<typeAlias alias="ranking" type="com.kdn.model.domain.Ranking"/>
+		<typeAlias alias="rankingpagebean" type="com.kdn.model.domain.RankingPageBean"/>
 			 
 	</typeAliases>
 	<mappers>

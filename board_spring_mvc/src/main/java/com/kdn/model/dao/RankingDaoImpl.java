@@ -17,16 +17,25 @@ public class RankingDaoImpl implements RankingDao {
 	private SqlSessionTemplate session;
 
 	@Override
-	public List<Ranking> searchAll(RankingPageBean rankingbean) {
-		RowBounds rows = new RowBounds(rankingbean.getStart()-1, rankingbean.getInterval());
+	public List<Ranking> searchN() {
 		
-		return session.selectList("ranking.searchAll", rankingbean, rows);
+		return session.selectList("ranking.searchN");
 	}
 
 	@Override
-	public int getCount(RankingPageBean rankingbean) {
-		// TODO Auto-generated method stub
-		return session.selectOne("ranking.getCount", rankingbean);
+	public List<Ranking> searchM() {
+		return session.selectList("ranking.searchM");
 	}
+
+	@Override
+	public List<Ranking> searchH() {
+		return session.selectList("ranking.searchH");
+	}
+
+	@Override
+	public List<Ranking> searchI() {
+		return session.selectList("ranking.searchI");
+	}
+
 
 }

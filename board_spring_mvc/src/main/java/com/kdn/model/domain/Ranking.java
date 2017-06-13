@@ -7,7 +7,16 @@ public class Ranking implements Serializable{
 	private int rkno;
 	private String rkname;
 	private String imag;
+	private String img;
 	
+	public Ranking(int rkno, String rkname, String imag, String img) {
+		super();
+		this.rkno = rkno;
+		this.rkname = rkname;
+		this.imag = imag;
+		this.img = img;
+	}
+
 	public Ranking(){}
 
 	public Ranking(int rkno, String rkname, String imag) {
@@ -15,6 +24,14 @@ public class Ranking implements Serializable{
 		this.rkno = rkno;
 		this.rkname = rkname;
 		this.imag = imag;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	public int getRkno() {
@@ -44,8 +61,7 @@ public class Ranking implements Serializable{
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Ranking [rkno=").append(rkno).append(", rkname=")
-				.append(rkname).append(", imag=").append(imag).append("]");
+		builder.append("Ranking [img=").append(img).append("]");
 		return builder.toString();
 	}
 	

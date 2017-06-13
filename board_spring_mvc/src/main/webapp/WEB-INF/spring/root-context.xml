@@ -62,6 +62,8 @@
 				<value>/WEB-INF/spring/Review_query.xml</value>
 				<value>/WEB-INF/spring/Diet_query.xml</value>
 				<value>/WEB-INF/spring/Suyo_query.xml</value>
+				<value>/WEB-INF/spring/Ranking_query.xml</value>
+				
 			</list>
 		</property>
 	</bean>

@@ -58,9 +58,15 @@
 	</select>
 	
 	<insert id="insert" parameterType="member">
-		insert into member(MNO,GRADE,PASSWORD,MNAME,PHONE,EMAIL)
+		insert into member(MNO,GRADE,PASSWORD,MNAME,PHONE,EMAIL,PREFER)
 		values(
-			#{mno:INTEGER},#{grade:CHAR},#{password:VARCHAR},#{mname:VARCHAR},#{phone:VARCHAR},#{email:VARCHAR}
+			#{mno:INTEGER}
+			,#{grade:CHAR}
+			,#{password:VARCHAR}
+			,#{mname:VARCHAR}
+			,#{phone:VARCHAR}
+			,#{email:VARCHAR}
+			,#{prefer:VARCHAR}
 		)
 	</insert>
 
@@ -69,6 +75,7 @@
 						,mname = #{mname:VARCHAR}	
 						,email = #{email:VARCHAR}	
 						,phone = #{phone:VARCHAR}
+						,prefer = #{prefer:VARCHAR}
 		where mno=#{mno:INTEGER}
 	</update>
 	
