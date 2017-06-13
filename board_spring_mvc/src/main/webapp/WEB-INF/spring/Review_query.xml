@@ -6,12 +6,12 @@
 
 <mapper namespace="review">
 	<insert id="insert" parameterType="review">
-		insert into reviewboard(RNO,MNO,SPOINT,COMMENTS,FNO,FNAME,REGDATE)
+		insert into reviewboard(RNO,MNO,SPOINT,COMMENTS,scode,FNAME,REGDATE)
 		values(reviewboard_no.nextval
 			   , #{mno:INTEGER}
 			   , #{spoint:INTEGER}
 			   , #{comments:VARCHAR}
-			   , #{fno:INTEGER}
+			   , #{scode:INTEGER}
 			   , #{fname:VARCHAR}
 			   , sysdate)
 	</insert>
@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="searchAll" parameterType="reviewpagebean" resultType="review" >
-		SELECT *
+		SELECT rno, mno, spoint, comments, scode, fname, to_char(regdate, 'yyyy-mm-dd') regdate
 		from reviewBoard
 		<where>
 		<if test = "word != null">
@@ -46,8 +46,8 @@
 				<when test="key== 'spoint'">
 					spoint like '%'||#{word}||'%'
 				</when>
-				<when test="key== 'fno'">
-					fno like '%'||#{word}||'%'
+				<when test="key== 'scode'">
+					scode like '%'||#{word}||'%'
 				</when>
 				<when test="key== 'fname'">
 					fname like '%'||#{word}||'%'

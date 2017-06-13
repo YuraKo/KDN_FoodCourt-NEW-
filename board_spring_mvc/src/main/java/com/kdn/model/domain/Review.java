@@ -10,7 +10,16 @@ public class Review implements Serializable{
 	private int fno;
 	private String fname;
 	private String regdate;
+	private int scode;
 	
+	public int getScode() {
+		return scode;
+	}
+
+	public void setScode(int scode) {
+		this.scode = scode;
+	}
+
 	public Review(){}
 
 	public int getRno() {

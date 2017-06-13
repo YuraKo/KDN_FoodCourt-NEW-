@@ -154,7 +154,7 @@
             <li><a href="#services" class="smooth-scroll">Menu</a></li>
             <li><a href="#about" class="smooth-scroll">Review</a></li>
             <li><a href="#gallery" class="smooth-scroll">TOP</a></li>
-     
+     		<li><a href="#dishes" class="smooth-scroll">Anonymity </a></li>
             <c:if test = "${empty mno}">
             	<li><a href="registerForm.do" class="smooth-scroll"> Register </a></li>
             	<li><a href="" class="smooth-scroll" data-toggle="modal" data-target="#myModal"> Login </a></li>

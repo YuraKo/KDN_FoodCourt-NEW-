@@ -14,7 +14,7 @@ create table suyo (
 )                    
 
 select * from suyo;
-
+alter table member add prefer varchar2(2000)
 select di.dietno "dietNo", count(*) "suyoCountAll"
 from SUYO su, diet di
 where di.dietno = su.dietno(+)
