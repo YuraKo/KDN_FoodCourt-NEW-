@@ -17,7 +17,7 @@
 	<p>${mno}님 안녕하세요</p>
 	<c:if test="${!empty preferList}">
 		<c:forEach var="preferList" items="${preferList}">
-		<p>오늘은 ${preferList.mainDish} 이 나오는 날입니다:)</p>
+		<p>오늘은 ${preferList.mainDish} 나오는 날입니다:)</p>
 		</c:forEach>	
 	</c:if>
 	<c:if test="${empty preferList }">

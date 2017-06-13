@@ -19,6 +19,7 @@ import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.RankingService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.biz.SuyoService;
 import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
@@ -45,6 +46,9 @@ public class HomeController {
 	
 	@Autowired
 	private RankingService rankingService;
+	
+	@Autowired
+	SuyoService suyoService;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -80,6 +84,9 @@ public class HomeController {
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		
+		List<Integer> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		return "index";
 	}
 	

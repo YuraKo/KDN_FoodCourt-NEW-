@@ -67,7 +67,7 @@ public class NoticeBoardController {
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		return "index";
 	}
@@ -89,7 +89,7 @@ public class NoticeBoardController {
 		
 		List<Review> list = reviewService.searchAll(bean);
 		model.addAttribute("list", list);
-		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
