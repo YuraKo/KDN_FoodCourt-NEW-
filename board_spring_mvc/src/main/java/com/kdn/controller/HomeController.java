@@ -68,7 +68,7 @@ public class HomeController {
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
-		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenuFromHome.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
 		model.addAttribute("rankingList", rankingList);

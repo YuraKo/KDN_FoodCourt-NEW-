@@ -33,18 +33,14 @@ public class SuyoController {
 	public String addSuyo(int dietNo, int mno, Model model) {
 		Suyo suyo = new Suyo(dietNo, mno);
 		suyoService.add(suyo);
-		System.out.println("suyo add>>>>>>>>>>>>>>>>>>>>>>" + suyo);
-		System.out.println("suyo count ++");
-		return "index";
+		return "redirect:listWeeklyMenu.do";
 	}
 	
 	@RequestMapping(value="minusSuyo.do", method=RequestMethod.GET)
 	public String minusSuyo(int dietNo, int mno, Model model){
 		Suyo suyo = new Suyo(dietNo, mno);
 		suyoService.minus(suyo);
-		System.out.println("suyo minus>>>>>>>>>>>>>>>>>>>" + suyo);
-		System.out.println("suyo count --");
-		return "index";
+		return "redirect:listWeeklyMenu.do";
 	}
  
 	@RequestMapping(value="searchSuyo.do", method=RequestMethod.GET)

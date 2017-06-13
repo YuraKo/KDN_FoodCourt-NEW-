@@ -1,6 +1,7 @@
 package com.kdn.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,12 +15,14 @@ import com.kdn.model.biz.DietService;
 import com.kdn.model.biz.NoticeBoardService;
 import com.kdn.model.biz.RankingService;
 import com.kdn.model.biz.ReviewService;
+import com.kdn.model.biz.SuyoService;
 import com.kdn.model.domain.Diet;
 import com.kdn.model.domain.NoticeBoard;
 import com.kdn.model.domain.NoticePageBean;
 import com.kdn.model.domain.Ranking;
 import com.kdn.model.domain.Review;
 import com.kdn.model.domain.ReviewPageBean;
+import com.kdn.model.domain.Suyo;
 
 @Controller
 public class DietController {
@@ -34,6 +37,9 @@ public class DietController {
 	
 	@Autowired
 	RankingService rankingService;
+	
+	@Autowired
+	SuyoService suyoService;
 	
 	@ExceptionHandler
 	public ModelAndView handler(Exception e) {
@@ -56,16 +62,12 @@ public class DietController {
 		model.addAttribute("addMenuContent", "weekly_menu/addMenu.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
@@ -91,16 +93,12 @@ public class DietController {
 		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
 
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
@@ -119,16 +117,12 @@ public class DietController {
 		model.addAttribute("updateMenuContent", "weekly_menu/updateMenuForm.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
@@ -150,16 +144,12 @@ public class DietController {
 		model.addAttribute("oneDiet", dietService.search(dietDate, scode));
 		
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
@@ -178,27 +168,52 @@ public class DietController {
 		model.addAttribute("reviewBoardContent", "review_board/listReview.jsp");
 		
 		dietService.update(diet);
-		System.out.println("diet update 완료 : " + diet);
 		
 		List<Diet> dietList = dietService.searchAll();
 		model.addAttribute("dietList", dietList);
 		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
 		
 		List<Ranking> rankingList = rankingService.searchN();
-		System.out.println("저녁"+rankingList);
 		model.addAttribute("rankingList", rankingList);
 		List<Ranking> rankingM = rankingService.searchM();
-		System.out.println("아침"+rankingM);
 		model.addAttribute("rankingM", rankingM);
 		List<Ranking> rankingH = rankingService.searchH();
-		System.out.println("한식"+rankingH);
 		model.addAttribute("rankingH", rankingH);
 		List<Ranking> rankingI = rankingService.searchI();
-		System.out.println("일품"+rankingI);
 		model.addAttribute("rankingI", rankingI);
 		
 		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
 		
+		return "index";
+	}
+	
+	@RequestMapping(value = "listWeeklyMenu.do", method = RequestMethod.GET)
+	public String home(Locale locale, Model model, NoticePageBean noticebean, ReviewPageBean bean) {
+		List<NoticeBoard> noticeList = noticeBoardService.searchAll(noticebean);
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("noticeBoardContent", "notice_board/listBoardFromHome.jsp");
+		
+		List<Review> list = reviewService.searchAll(bean);
+		model.addAttribute("list", list);
+		model.addAttribute("reviewBoardContent", "review_board/listReviewFromHome.jsp");
+		
+		List<Diet> dietList = dietService.searchAll();
+		model.addAttribute("dietList", dietList);
+		model.addAttribute("weeklyMenuContent", "weekly_menu/weeklyMenu.jsp");
+		
+		List<Ranking> rankingList = rankingService.searchN();
+		model.addAttribute("rankingList", rankingList);
+		List<Ranking> rankingM = rankingService.searchM();
+		model.addAttribute("rankingM", rankingM);
+		List<Ranking> rankingH = rankingService.searchH();
+		model.addAttribute("rankingH", rankingH);
+		List<Ranking> rankingI = rankingService.searchI();
+		model.addAttribute("rankingI", rankingI);
+		
+		model.addAttribute("rankingBoardContent", "ranking_board/listBoard.jsp");
+		
+		List<Suyo> suyoCountList = suyoService.getSuyoCountAll();
+		model.addAttribute("suyoCountList", suyoCountList);
 		return "index";
 	}
 	

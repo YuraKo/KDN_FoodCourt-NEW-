@@ -11,7 +11,7 @@
 <link href="./css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="./js/bootstrap-toggle.min.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<script>location.hash="services";</script>
+
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 
