@@ -365,6 +365,9 @@
 					<c:if test = "${!empty addMenuContent}">
 						<jsp:include page="${addMenuContent}"/>	
 					</c:if>
+					<c:if test = "${!empty updateMenuContent}">
+						<jsp:include page="${updateMenuContent}"/>	
+					</c:if>
 					<c:if test = "${empty addMenuContent}">
 						<article id="weeklyMenuContent">
 							<jsp:include page="${weeklyMenuContent}"/>
